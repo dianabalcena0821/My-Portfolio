@@ -4,39 +4,31 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Diana C. Balcena — Virtual Assistant</title>
-  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <!-- Fallback: use system fonts similar to Facebook -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css)"/>
+  <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js)"></script>
 
   <style>
-    /* =============================================
-       VARIABLES — Facebook-inspired palette
-    ============================================= */
     :root {
-      --fb-blue:       #1877f2;
-      --fb-blue-dark:  #166fe5;
-      --fb-blue-lo:    rgba(24,119,242,0.08);
-      --fb-blue-bd:    rgba(24,119,242,0.2);
-      --fb-green:      #42b72a;
-      --fb-bg:         #f0f2f5;
-      --fb-white:      #ffffff;
-      --fb-card:       #ffffff;
-      --fb-border:     #dadde1;
-      --fb-text:       #050505;
-      --fb-text2:      #1c1e21;
-      --fb-muted:      #65676b;
-      --fb-light:      #e4e6eb;
-      --fb-hover:      #f2f2f2;
-      --fb-nav:        #ffffff;
-      --fb-shadow:     0 1px 2px rgba(0,0,0,0.2);
-      --fb-shadow-md:  0 2px 8px rgba(0,0,0,0.15);
-      --font:          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --fb-blue: #1877f2;
+      --fb-blue-dark: #166fe5;
+      --fb-blue-lo: rgba(24,119,242,0.08);
+      --fb-blue-bd: rgba(24,119,242,0.2);
+      --fb-green: #42b72a;
+      --fb-bg: #f0f2f5;
+      --fb-white: #ffffff;
+      --fb-card: #ffffff;
+      --fb-border: #dadde1;
+      --fb-text: #050505;
+      --fb-text2: #1c1e21;
+      --fb-muted: #65676b;
+      --fb-light: #e4e6eb;
+      --fb-hover: #f2f2f2;
+      --fb-nav: #ffffff;
+      --fb-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      --fb-shadow-md: 0 2px 8px rgba(0,0,0,0.15);
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* =============================================
-       RESET & BASE
-    ============================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -51,53 +43,72 @@
     img { display: block; max-width: 100%; }
 
     /* =============================================
-       TOP NAVBAR — Facebook style
+       TOP NAVBAR
     ============================================= */
     .fb-nav {
-      position: sticky; top: 0; z-index: 200;
+      position: sticky;
+      top: 0;
+      z-index: 200;
       background: var(--fb-nav);
       border-bottom: 1px solid var(--fb-border);
       box-shadow: var(--fb-shadow);
       height: 56px;
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       padding: 0 16px;
     }
 
     .nav-inner {
-      max-width: 1260px; margin: 0 auto; width: 100%;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      max-width: 1260px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
     }
 
-    /* Left: Logo */
     .nav-logo {
-      display: flex; align-items: center; gap: 8px;
-    }
-    .nav-logo-icon {
-      width: 40px; height: 40px;
-      background: var(--fb-blue);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 22px; font-weight: 900;
-      font-family: Georgia, serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       flex-shrink: 0;
     }
+
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--fb-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 900;
+      font-family: Georgia, serif;
+    }
+
     .nav-logo-text {
-      font-size: 13px; font-weight: 600;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--fb-muted);
       line-height: 1.3;
     }
+
     .nav-logo-name {
-      font-size: 15px; font-weight: 700;
+      font-size: 15px;
+      font-weight: 700;
       color: var(--fb-text);
     }
 
-    /* Center: Nav tabs */
     .nav-tabs {
-      display: flex; gap: 4px;
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
     }
+
     .nav-tab {
       padding: 8px 28px;
       border-radius: 8px;
@@ -105,45 +116,67 @@
       color: var(--fb-muted);
       font-size: 20px;
       transition: background 0.15s, color 0.15s;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-bottom: 3px solid transparent;
-      position: relative;
     }
-    .nav-tab:hover { background: var(--fb-hover); color: var(--fb-blue); }
-    .nav-tab.active { color: var(--fb-blue); border-bottom-color: var(--fb-blue); }
-    .nav-tab.active i { color: var(--fb-blue); }
 
-    /* Right: Actions */
-    .nav-actions {
-      display: flex; align-items: center; gap: 8px;
-      justify-content: flex-end;
+    .nav-tab:hover {
+      background: var(--fb-hover);
+      color: var(--fb-blue);
     }
+
+    .nav-tab.active {
+      color: var(--fb-blue);
+      border-bottom-color: var(--fb-blue);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
     .nav-action-btn {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       background: var(--fb-light);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 16px; color: var(--fb-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--fb-text);
       transition: background 0.15s;
       border: none;
     }
-    .nav-action-btn:hover { background: #d8dadf; }
+
+    .nav-action-btn:hover {
+      background: #d8dadf;
+    }
 
     .hire-me-btn {
       background: var(--fb-blue);
       color: white;
       border: none;
-      padding: 8px 20px;
+      padding: 8px 16px;
       border-radius: 6px;
-      font-size: 14px; font-weight: 600;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
       transition: background 0.15s;
       white-space: nowrap;
     }
-    .hire-me-btn:hover { background: var(--fb-blue-dark); }
+
+    .hire-me-btn:hover {
+      background: var(--fb-blue-dark);
+    }
 
     /* =============================================
-       COVER + PROFILE — Facebook Profile style
+       COVER + PROFILE
     ============================================= */
     .profile-section {
       background: var(--fb-white);
@@ -158,54 +191,72 @@
       overflow: hidden;
     }
 
-    /* Cover pattern overlay */
     .cover-photo::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image:
         radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
     }
 
-    /* Cover text overlay */
     .cover-text {
-      position: absolute; bottom: 0; left: 0; right: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
       padding: 40px 32px 100px;
       background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
     }
+
     .cover-tagline {
-      font-size: 28px; font-weight: 700;
-      color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      max-width: 600px; line-height: 1.3;
-    }
-    .cover-sub {
-      font-size: 15px; color: rgba(255,255,255,0.85);
-      margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      max-width: 600px;
+      line-height: 1.3;
     }
 
-    /* Available badge on cover */
+    .cover-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
     .cover-badge {
-      position: absolute; top: 20px; right: 20px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
       background: rgba(255,255,255,0.95);
       border-radius: 20px;
       padding: 8px 16px;
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600; color: var(--fb-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fb-green);
       box-shadow: var(--fb-shadow-md);
     }
+
     .cover-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--fb-green); border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      background: var(--fb-green);
+      border-radius: 50%;
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(66,183,42,0.4); }
-      50%      { box-shadow: 0 0 0 5px rgba(66,183,42,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(66,183,42,0.4); }
+      50% { box-shadow: 0 0 0 5px rgba(66,183,42,0); }
     }
 
-    /* Profile area below cover */
     .profile-info {
-      max-width: 1260px; margin: 0 auto;
+      max-width: 1260px;
+      margin: 0 auto;
       padding: 0 16px 16px;
       display: flex;
       align-items: flex-end;
@@ -213,28 +264,17 @@
       position: relative;
     }
 
-    .profile-avatar-wrap {
-      position: relative;
-      margin-top: -80px;
-      flex-shrink: 0;
-    }
-    .profile-avatar {
-      width: 168px; height: 168px;
-      border-radius: 50%;
-      border: 4px solid var(--fb-white);
-      background: var(--fb-light);
-      object-fit: cover;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: var(--fb-shadow-md);
-    }
     .profile-avatar-placeholder {
-      width: 168px; height: 168px;
+      width: 168px;
+      height: 168px;
       border-radius: 50%;
       border: 4px solid var(--fb-white);
       background: linear-gradient(135deg, #1877f2, #42a5f5);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 64px; color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      color: white;
       box-shadow: var(--fb-shadow-md);
       flex-shrink: 0;
       margin-top: -80px;
@@ -244,59 +284,93 @@
       flex: 1;
       padding-bottom: 4px;
     }
+
     .profile-name {
-      font-size: 28px; font-weight: 800;
-      color: var(--fb-text); line-height: 1.2;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--fb-text);
+      line-height: 1.2;
     }
+
     .profile-title {
-      font-size: 16px; color: var(--fb-muted);
+      font-size: 16px;
+      color: var(--fb-muted);
       margin-top: 4px;
     }
+
     .profile-location {
-      font-size: 14px; color: var(--fb-muted);
+      font-size: 14px;
+      color: var(--fb-muted);
       margin-top: 4px;
-      display: flex; align-items: center; gap: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .profile-actions {
-      display: flex; gap: 8px; align-items: center;
-      padding-bottom: 4px; flex-shrink: 0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding-bottom: 4px;
+      flex-shrink: 0;
     }
+
     .btn-primary-fb {
       background: var(--fb-blue);
-      color: white; border: none;
+      color: white;
+      border: none;
       padding: 9px 16px;
       border-radius: 6px;
-      font-size: 15px; font-weight: 600;
-      cursor: pointer; display: flex;
-      align-items: center; gap: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       transition: background 0.15s;
     }
-    .btn-primary-fb:hover { background: var(--fb-blue-dark); }
+
+    .btn-primary-fb:hover {
+      background: var(--fb-blue-dark);
+    }
+
     .btn-secondary-fb {
       background: var(--fb-light);
-      color: var(--fb-text); border: none;
+      color: var(--fb-text);
+      border: none;
       padding: 9px 16px;
       border-radius: 6px;
-      font-size: 15px; font-weight: 600;
-      cursor: pointer; display: flex;
-      align-items: center; gap: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       transition: background 0.15s;
     }
-    .btn-secondary-fb:hover { background: #d8dadf; }
 
-    /* Profile nav tabs */
+    .btn-secondary-fb:hover {
+      background: #d8dadf;
+    }
+
     .profile-nav {
-      max-width: 1260px; margin: 0 auto;
+      max-width: 1260px;
+      margin: 0 auto;
       padding: 0 16px;
       border-top: 1px solid var(--fb-border);
-      display: flex; gap: 4px;
+      display: flex;
+      gap: 4px;
       overflow-x: auto;
     }
-    .profile-nav::-webkit-scrollbar { display: none; }
+
+    .profile-nav::-webkit-scrollbar {
+      display: none;
+    }
+
     .pnav-item {
       padding: 14px 16px;
-      font-size: 15px; font-weight: 600;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--fb-muted);
       cursor: pointer;
       border-bottom: 3px solid transparent;
@@ -304,14 +378,23 @@
       transition: color 0.15s, background 0.15s;
       border-radius: 8px 8px 0 0;
     }
-    .pnav-item:hover { background: var(--fb-hover); color: var(--fb-blue); }
-    .pnav-item.active { color: var(--fb-blue); border-bottom-color: var(--fb-blue); }
+
+    .pnav-item:hover {
+      background: var(--fb-hover);
+      color: var(--fb-blue);
+    }
+
+    .pnav-item.active {
+      color: var(--fb-blue);
+      border-bottom-color: var(--fb-blue);
+    }
 
     /* =============================================
-       MAIN LAYOUT — Facebook 3-col (left, center, right)
+       MAIN LAYOUT
     ============================================= */
     .fb-layout {
-      max-width: 1260px; margin: 0 auto;
+      max-width: 1260px;
+      margin: 0 auto;
       padding: 0 16px 40px;
       display: grid;
       grid-template-columns: 360px 1fr;
@@ -331,111 +414,169 @@
     }
 
     .card-title {
-      font-size: 20px; font-weight: 700;
+      font-size: 20px;
+      font-weight: 700;
       color: var(--fb-text);
       padding: 0 16px 12px;
     }
 
     .card-section-label {
-      font-size: 17px; font-weight: 700;
+      font-size: 17px;
+      font-weight: 700;
       color: var(--fb-text);
       padding: 8px 16px 4px;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
     .card-see-all {
-      font-size: 14px; font-weight: 600;
-      color: var(--fb-blue); cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--fb-blue);
+      cursor: pointer;
     }
-    .card-see-all:hover { text-decoration: underline; }
+
+    .card-see-all:hover {
+      text-decoration: underline;
+    }
 
     /* =============================================
-       INTRO CARD (Left sidebar)
+       INTRO CARD
     ============================================= */
     .intro-item {
-      display: flex; align-items: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       padding: 8px 16px;
-      font-size: 15px; color: var(--fb-text2);
+      font-size: 15px;
+      color: var(--fb-text2);
       line-height: 1.4;
     }
+
     .intro-item i {
       color: var(--fb-muted);
-      width: 20px; text-align: center;
-      font-size: 16px; flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+      flex-shrink: 0;
     }
-    .intro-item strong { color: var(--fb-text); }
+
+    .intro-item strong {
+      color: var(--fb-text);
+    }
 
     .intro-bio {
       padding: 8px 16px;
-      font-size: 15px; color: var(--fb-text2);
-      line-height: 1.6; text-align: center;
+      font-size: 15px;
+      color: var(--fb-text2);
+      line-height: 1.6;
+      text-align: center;
       border-bottom: 1px solid var(--fb-border);
       margin-bottom: 8px;
     }
 
-    /* Skill tags */
     .skills-wrap {
       padding: 8px 16px;
-      display: flex; flex-wrap: wrap; gap: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
+
     .skill-chip {
       background: var(--fb-blue-lo);
       color: var(--fb-blue);
       border: 1px solid var(--fb-blue-bd);
       border-radius: 99px;
       padding: 5px 12px;
-      font-size: 13px; font-weight: 600;
+      font-size: 13px;
+      font-weight: 600;
       transition: background 0.15s;
       cursor: default;
     }
-    .skill-chip:hover { background: rgba(24,119,242,0.14); }
+
+    .skill-chip:hover {
+      background: rgba(24,119,242,0.14);
+    }
 
     /* =============================================
-       TIMELINE / POSTS (Center feed)
+       PHOTOS GRID
     ============================================= */
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 0 0 4px;
+    }
 
-    /* Create post box */
-    .create-post {
-      background: var(--fb-card);
+    .photo-thumb {
+      aspect-ratio: 1;
+      background: var(--fb-light);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+
+    .photo-thumb:hover {
+      filter: brightness(0.9);
+    }
+
+    /* =============================================
+       REFERENCES
+    ============================================= */
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 0 16px 8px;
+    }
+
+    .ref-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      padding: 8px;
       border-radius: 8px;
-      box-shadow: var(--fb-shadow);
-      padding: 12px 16px;
-      margin-bottom: 16px;
-    }
-    .create-post-top {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 10px;
-    }
-    .post-avatar-sm {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1877f2, #42a5f5);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 16px; font-weight: 700;
-      flex-shrink: 0;
-    }
-    .post-input-fake {
-      flex: 1;
-      background: var(--fb-hover);
-      border-radius: 99px;
-      padding: 10px 16px;
-      font-size: 15px; color: var(--fb-muted);
-      cursor: text;
-    }
-    .post-actions {
-      display: flex; border-top: 1px solid var(--fb-border);
-      padding-top: 8px; gap: 4px;
-    }
-    .post-action-btn {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      gap: 8px; padding: 8px;
-      border-radius: 6px; cursor: pointer;
-      font-size: 14px; font-weight: 600;
-      color: var(--fb-muted);
       transition: background 0.15s;
     }
-    .post-action-btn:hover { background: var(--fb-hover); }
 
-    /* Post / Feed card */
+    .ref-item:hover {
+      background: var(--fb-hover);
+    }
+
+    .ref-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #e4e6eb, #c9cdd4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .ref-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fb-text);
+      line-height: 1.3;
+    }
+
+    .ref-role {
+      font-size: 12px;
+      color: var(--fb-muted);
+    }
+
+    /* =============================================
+       POST CARD
+    ============================================= */
     .post-card {
       background: var(--fb-card);
       border-radius: 8px;
@@ -445,206 +586,783 @@
     }
 
     .post-header {
-      display: flex; align-items: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       padding: 12px 16px;
     }
+
     .post-avatar {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: linear-gradient(135deg, #1877f2, #42a5f5);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 16px; font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
       flex-shrink: 0;
     }
-    .post-meta { flex: 1; }
-    .post-author { font-size: 15px; font-weight: 600; color: var(--fb-text); }
-    .post-time { font-size: 13px; color: var(--fb-muted); display: flex; align-items: center; gap: 4px; }
-    .post-more { color: var(--fb-muted); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
-    .post-more:hover { background: var(--fb-hover); }
 
-    .post-body { padding: 0 16px 12px; }
+    .post-meta {
+      flex: 1;
+    }
+
+    .post-author {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .post-time {
+      font-size: 13px;
+      color: var(--fb-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .post-more {
+      color: var(--fb-muted);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .post-more:hover {
+      background: var(--fb-hover);
+    }
+
+    .post-body {
+      padding: 0 16px 12px;
+    }
+
     .post-text {
-      font-size: 15px; color: var(--fb-text);
-      line-height: 1.6; margin-bottom: 12px;
-    }
-    .post-text.large {
-      font-size: 24px; font-weight: 400; line-height: 1.4;
+      font-size: 15px;
+      color: var(--fb-text);
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
-    /* Post with colored background */
     .post-bg {
       margin: 0 -16px;
       padding: 28px 32px;
       text-align: center;
       min-height: 220px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .post-bg-text {
-      font-size: 26px; font-weight: 700;
-      line-height: 1.35; color: white;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: white;
     }
 
-    .post-img {
-      width: 100%;
-      background: var(--fb-light);
-      min-height: 200px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 48px;
-      overflow: hidden;
-    }
-    .post-img img { width: 100%; object-fit: cover; }
-
-    /* Reaction bar */
+    /* =============================================
+       REACTIONS SYSTEM - FIXED FACEBOOK STYLE
+    ============================================= */
     .post-reactions {
-      padding: 6px 16px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--fb-border);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .reaction-count {
-      font-size: 15px; color: var(--fb-muted);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .reaction-icons { display: flex; gap: 2px; }
-    .reaction-icon {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      border: 2px solid var(--fb-white);
-    }
-    .r-like { background: #1877f2; }
-    .r-love { background: #f33e58; }
-    .r-care { background: #f7b928; }
 
+    .reaction-summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .reaction-summary:hover .reaction-text {
+      text-decoration: underline;
+    }
+
+    .reaction-emojis {
+      display: flex;
+      align-items: center;
+    }
+
+    .reaction-emoji-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      margin-right: -4px;
+      border: 2px solid white;
+      position: relative;
+    }
+
+    .reaction-emoji-icon.like-icon {
+      background: #1877f2;
+    }
+
+    .reaction-emoji-icon.love-icon {
+      background: #f33e58;
+    }
+
+    .reaction-emoji-icon.care-icon {
+      background: #f7b928;
+    }
+
+    .reaction-text {
+      font-size: 15px;
+      color: var(--fb-muted);
+    }
+
+    .post-stats {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      color: var(--fb-muted);
+    }
+
+    .post-stats span {
+      cursor: pointer;
+    }
+
+    .post-stats span:hover {
+      text-decoration: underline;
+    }
+
+    /* Action buttons */
     .post-btns {
-      display: flex; gap: 4px;
+      display: flex;
       padding: 4px 8px;
       border-top: 1px solid var(--fb-border);
     }
+
     .post-btn {
-      flex: 1; display: flex; align-items: center;
-      justify-content: center; gap: 6px;
-      padding: 8px; border-radius: 6px;
-      font-size: 14px; font-weight: 600;
-      color: var(--fb-muted); cursor: pointer;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-muted);
+      cursor: pointer;
       transition: background 0.15s;
+      user-select: none;
+      position: relative;
     }
-    .post-btn:hover { background: var(--fb-hover); }
-    .post-btn.liked { color: var(--fb-blue); }
+
+    .post-btn:hover {
+      background: var(--fb-hover);
+    }
+
+    .post-btn.reacted {
+      color: var(--fb-blue);
+    }
+
+    .post-btn.reacted.love {
+      color: #f33e58;
+    }
+
+    .post-btn.reacted.care,
+    .post-btn.reacted.haha,
+    .post-btn.reacted.wow,
+    .post-btn.reacted.sad {
+      color: #f7b928;
+    }
+
+    .post-btn.reacted.angry {
+      color: #e9710f;
+    }
 
     /* =============================================
-       EXPERIENCE CARD — FB Timeline style
+       REACTION PICKER - FACEBOOK STYLE
+    ============================================= */
+    .reaction-picker-container {
+      position: relative;
+    }
+
+    .reaction-picker {
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--fb-white);
+      border-radius: 40px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.15);
+      padding: 6px 10px;
+      display: flex;
+      gap: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+      z-index: 100;
+    }
+
+    .reaction-picker.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .reaction-option {
+      font-size: 32px;
+      cursor: pointer;
+      transition: transform 0.15s;
+      position: relative;
+      padding: 2px 4px;
+    }
+
+    .reaction-option:hover {
+      transform: scale(1.3) translateY(-8px);
+    }
+
+    .reaction-label {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      font-size: 11px;
+      padding: 5px 8px;
+      border-radius: 15px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s;
+      pointer-events: none;
+    }
+
+    .reaction-option:hover .reaction-label {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Current reaction indicator */
+    .current-reaction {
+      font-size: 18px;
+      margin-right: 4px;
+    }
+
+    /* =============================================
+       COMMENTS SECTION
+    ============================================= */
+    .comments-section {
+      border-top: 1px solid var(--fb-border);
+      padding: 12px 16px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .comments-section.show {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .comment-input-wrap {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .comment-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #606770, #8a8d91);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .comment-input-box {
+      flex: 1;
+      background: var(--fb-hover);
+      border-radius: 20px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .comment-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      outline: none;
+      font-family: var(--font);
+      color: var(--fb-text);
+    }
+
+    .comment-input::placeholder {
+      color: var(--fb-muted);
+    }
+
+    .comment-send {
+      background: none;
+      border: none;
+      color: var(--fb-blue);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+      opacity: 0.3;
+      transition: opacity 0.15s;
+    }
+
+    .comment-send:hover,
+    .comment-send.active {
+      opacity: 1;
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .comment-item {
+      display: flex;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .comment-content {
+      flex: 1;
+    }
+
+    .comment-bubble {
+      background: var(--fb-hover);
+      border-radius: 18px;
+      padding: 8px 12px;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .comment-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .comment-text {
+      font-size: 15px;
+      color: var(--fb-text);
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .comment-actions {
+      display: flex;
+      gap: 12px;
+      padding-left: 12px;
+      margin-top: 4px;
+    }
+
+    .comment-action {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--fb-muted);
+      cursor: pointer;
+    }
+
+    .comment-action:hover {
+      text-decoration: underline;
+    }
+
+    .comment-action.liked {
+      color: var(--fb-blue);
+    }
+
+    .comment-time {
+      font-size: 12px;
+      color: var(--fb-muted);
+      font-weight: 400;
+    }
+
+    /* =============================================
+       SHARE MODAL
+    ============================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .share-modal {
+      background: var(--fb-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+      width: 500px;
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.2s;
+    }
+
+    .modal-overlay.show .share-modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--fb-border);
+      position: relative;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fb-text);
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--fb-hover);
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--fb-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .modal-close:hover {
+      background: #d8dadf;
+    }
+
+    .modal-body {
+      padding: 16px;
+    }
+
+    .share-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .share-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .share-option:hover {
+      background: var(--fb-hover);
+    }
+
+    .share-option-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .share-option-icon.fb { background: #1877f2; color: white; }
+    .share-option-icon.tw { background: #1da1f2; color: white; }
+    .share-option-icon.li { background: #0077b5; color: white; }
+    .share-option-icon.wa { background: #25d366; color: white; }
+    .share-option-icon.em { background: var(--fb-muted); color: white; }
+    .share-option-icon.cp { background: var(--fb-light); color: var(--fb-text); }
+
+    .share-option-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .copy-link-wrap {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      background: var(--fb-hover);
+      border-radius: 8px;
+    }
+
+    .copy-link-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      color: var(--fb-text);
+      outline: none;
+    }
+
+    .copy-link-btn {
+      background: var(--fb-blue);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .copy-link-btn:hover {
+      background: var(--fb-blue-dark);
+    }
+
+    /* =============================================
+       TOAST NOTIFICATION
+    ============================================= */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #323232;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-emoji {
+      font-size: 20px;
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 16px;
+      transition: background 0.15s;
+      border-radius: 8px;
+    }
+
+    .service-row:hover {
+      background: var(--fb-hover);
+    }
+
+    .service-icon-fb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--fb-blue-lo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--fb-blue);
+      flex-shrink: 0;
+    }
+
+    .service-info {
+      flex: 1;
+    }
+
+    .service-info .s-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .service-info .s-desc {
+      font-size: 13px;
+      color: var(--fb-muted);
+      line-height: 1.4;
+    }
+
+    /* =============================================
+       EXPERIENCE
     ============================================= */
     .exp-item {
-      display: flex; gap: 12px;
+      display: flex;
+      gap: 12px;
       padding: 12px 16px;
       transition: background 0.15s;
     }
-    .exp-item:hover { background: var(--fb-hover); }
+
+    .exp-item:hover {
+      background: var(--fb-hover);
+    }
 
     .exp-logo {
-      width: 56px; height: 56px;
+      width: 56px;
+      height: 56px;
       border-radius: 8px;
       background: var(--fb-light);
       border: 1px solid var(--fb-border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; flex-shrink: 0;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
     }
-    .exp-details { flex: 1; }
-    .exp-title { font-size: 15px; font-weight: 600; color: var(--fb-text); }
-    .exp-company { font-size: 14px; color: var(--fb-muted); }
-    .exp-period { font-size: 13px; color: var(--fb-muted); }
-    .exp-location { font-size: 13px; color: var(--fb-muted); }
-    .exp-desc { font-size: 14px; color: var(--fb-text2); margin-top: 6px; line-height: 1.5; }
 
-    /* VA highlight badge */
+    .exp-details {
+      flex: 1;
+    }
+
+    .exp-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .exp-company {
+      font-size: 14px;
+      color: var(--fb-muted);
+    }
+
+    .exp-period {
+      font-size: 13px;
+      color: var(--fb-muted);
+    }
+
+    .exp-desc {
+      font-size: 14px;
+      color: var(--fb-text2);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
     .va-badge {
-      display: inline-flex; align-items: center; gap: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       background: #e7f3ff;
       color: var(--fb-blue);
       border: 1px solid #b3d4ff;
       border-radius: 4px;
       padding: 2px 8px;
-      font-size: 12px; font-weight: 600;
+      font-size: 12px;
+      font-weight: 600;
       margin-top: 6px;
     }
 
     /* =============================================
-       EDUCATION CARD
+       EDUCATION
     ============================================= */
     .edu-item {
-      display: flex; gap: 12px;
+      display: flex;
+      gap: 12px;
       padding: 12px 16px;
       transition: background 0.15s;
     }
-    .edu-item:hover { background: var(--fb-hover); }
+
+    .edu-item:hover {
+      background: var(--fb-hover);
+    }
+
     .edu-logo {
-      width: 56px; height: 56px;
+      width: 56px;
+      height: 56px;
       border-radius: 8px;
       background: var(--fb-blue-lo);
       border: 1px solid var(--fb-blue-bd);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
     }
-    .edu-details { flex: 1; }
-    .edu-school { font-size: 15px; font-weight: 600; color: var(--fb-text); }
-    .edu-degree { font-size: 14px; color: var(--fb-muted); }
-    .edu-year { font-size: 13px; color: var(--fb-muted); }
+
+    .edu-details {
+      flex: 1;
+    }
+
+    .edu-school {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fb-text);
+    }
+
+    .edu-degree {
+      font-size: 14px;
+      color: var(--fb-muted);
+    }
+
+    .edu-year {
+      font-size: 13px;
+      color: var(--fb-muted);
+    }
 
     /* =============================================
-       PHOTOS GRID
+       CONTACT FORM
     ============================================= */
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 4px; padding: 0 0 4px;
-    }
-    .photo-thumb {
-      aspect-ratio: 1;
-      background: var(--fb-light);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px; cursor: pointer;
-      transition: filter 0.2s;
-      position: relative;
-    }
-    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .photo-thumb:hover { filter: brightness(0.9); }
-    .photo-thumb:first-child { border-radius: 0; }
-
-    /* =============================================
-       SERVICES CARD — FB style
-    ============================================= */
-    .service-row {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 16px;
-      transition: background 0.15s; cursor: default;
-      border-radius: 8px;
-    }
-    .service-row:hover { background: var(--fb-hover); }
-    .service-icon-fb {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--fb-blue-lo);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; color: var(--fb-blue); flex-shrink: 0;
-    }
-    .service-info .s-name { font-size: 15px; font-weight: 600; color: var(--fb-text); }
-    .service-info .s-desc { font-size: 13px; color: var(--fb-muted); }
-
-    /* =============================================
-       CONTACT FORM CARD
-    ============================================= */
-    .contact-form-inner { padding: 0 16px 16px; }
     .form-group {
       margin-bottom: 12px;
     }
+
     .form-label {
-      font-size: 13px; font-weight: 600;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--fb-muted);
-      display: block; margin-bottom: 6px;
+      display: block;
+      margin-bottom: 6px;
     }
+
     .form-input {
       width: 100%;
       background: var(--fb-hover);
@@ -652,30 +1370,49 @@
       border-radius: 6px;
       padding: 11px 14px;
       font-family: var(--font);
-      font-size: 15px; color: var(--fb-text);
+      font-size: 15px;
+      color: var(--fb-text);
       outline: none;
       transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
     }
-    .form-input::placeholder { color: var(--fb-muted); }
+
+    .form-input::placeholder {
+      color: var(--fb-muted);
+    }
+
     .form-input:focus {
       border-color: var(--fb-blue);
       box-shadow: 0 0 0 2px rgba(24,119,242,0.2);
       background: white;
     }
-    textarea.form-input { resize: vertical; min-height: 100px; }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+    }
+
     .submit-btn {
       width: 100%;
       background: var(--fb-blue);
-      color: white; border: none;
+      color: white;
+      border: none;
       padding: 12px;
       border-radius: 6px;
-      font-size: 17px; font-weight: 700;
+      font-size: 17px;
+      font-weight: 700;
       cursor: pointer;
       transition: background 0.15s;
       font-family: var(--font);
     }
-    .submit-btn:hover { background: var(--fb-blue-dark); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .submit-btn:hover {
+      background: var(--fb-blue-dark);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
 
     /* =============================================
        DIVIDER
@@ -687,130 +1424,264 @@
     }
 
     /* =============================================
-       FRIENDS / REFERENCES
-    ============================================= */
-    .refs-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 8px;
-      padding: 0 16px 8px;
-    }
-    .ref-item {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; cursor: pointer;
-      padding: 8px; border-radius: 8px;
-      transition: background 0.15s;
-    }
-    .ref-item:hover { background: var(--fb-hover); }
-    .ref-avatar {
-      width: 80px; height: 80px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #e4e6eb, #c9cdd4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px; margin-bottom: 6px; overflow: hidden;
-    }
-    .ref-name { font-size: 13px; font-weight: 600; color: var(--fb-text); line-height: 1.3; }
-    .ref-role { font-size: 12px; color: var(--fb-muted); }
-
-    /* =============================================
-       RIGHT SIDEBAR CARD (Spotlight / Hire Me CTA)
-    ============================================= */
-    .cta-card {
-      background: linear-gradient(135deg, #1877f2 0%, #1565c0 100%);
-      border-radius: 8px;
-      padding: 24px 20px;
-      text-align: center;
-      margin-bottom: 16px;
-      box-shadow: var(--fb-shadow);
-    }
-    .cta-emoji { font-size: 40px; margin-bottom: 12px; }
-    .cta-title { font-size: 18px; font-weight: 700; color: white; margin-bottom: 8px; }
-    .cta-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 16px; line-height: 1.5; }
-    .cta-btn {
-      background: white; color: var(--fb-blue);
-      border: none; padding: 10px 24px;
-      border-radius: 6px;
-      font-size: 15px; font-weight: 700;
-      cursor: pointer; display: inline-block;
-      transition: background 0.15s;
-    }
-    .cta-btn:hover { background: #f0f2f5; }
-
-    /* =============================================
        FOOTER
     ============================================= */
     .fb-footer {
-      max-width: 1260px; margin: 0 auto;
-      padding: 0 16px 24px;
-      font-size: 13px; color: var(--fb-muted);
-      line-height: 1.8;
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 16px 100px;
+      font-size: 13px;
+      color: var(--fb-muted);
     }
-    .fb-footer a { color: var(--fb-muted); }
-    .fb-footer a:hover { text-decoration: underline; }
+
+    .fb-footer a {
+      color: var(--fb-muted);
+    }
+
+    .fb-footer a:hover {
+      text-decoration: underline;
+    }
 
     /* =============================================
-       MOBILE NAV (bottom bar)
+       MOBILE BOTTOM NAV - FIXED
     ============================================= */
     .mob-bottom-nav {
       display: none;
-      position: fixed; bottom: 0; left: 0; right: 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: var(--fb-white);
       border-top: 1px solid var(--fb-border);
-      padding: 8px 0;
+      padding: 6px 0;
       z-index: 200;
       justify-content: space-around;
+      box-shadow: 0 -1px 10px rgba(0,0,0,0.1);
     }
+
     .mob-nav-item {
-      display: flex; flex-direction: column; align-items: center;
-      font-size: 10px; color: var(--fb-muted);
-      padding: 4px 12px;
-      border-radius: 8px; cursor: pointer;
-      transition: color 0.15s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      color: var(--fb-muted);
+      padding: 6px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+      text-decoration: none;
     }
-    .mob-nav-item i { font-size: 22px; margin-bottom: 2px; }
-    .mob-nav-item.active { color: var(--fb-blue); }
+
+    .mob-nav-item i {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .mob-nav-item.active {
+      color: var(--fb-blue);
+    }
+
+    .mob-nav-item:hover {
+      background: var(--fb-hover);
+    }
 
     /* =============================================
-       RESPONSIVE
+       RESPONSIVE - FIXED MOBILE LAYOUT
     ============================================= */
     @media (max-width: 1024px) {
-      .fb-layout { grid-template-columns: 1fr; }
-      .cover-photo { height: 250px; }
-      .profile-avatar-placeholder { width: 120px; height: 120px; font-size: 48px; margin-top: -60px; }
-      .profile-name { font-size: 22px; }
-      .nav-tabs { display: none; }
-      .mob-bottom-nav { display: flex; }
-      body { padding-bottom: 64px; }
+      .fb-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cover-photo {
+        height: 200px;
+      }
+
+      .profile-avatar-placeholder {
+        width: 120px;
+        height: 120px;
+        font-size: 48px;
+        margin-top: -60px;
+      }
+
+      .profile-name {
+        font-size: 22px;
+      }
+
+      .nav-tabs {
+        display: none;
+      }
+
+      .mob-bottom-nav {
+        display: flex;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+
+      .fb-footer {
+        padding-bottom: 100px;
+      }
     }
 
-    @media (max-width: 600px) {
-      .fb-nav { padding: 0 12px; }
-      .profile-info { flex-wrap: wrap; }
-      .profile-actions { width: 100%; }
-      .btn-primary-fb, .btn-secondary-fb { flex: 1; justify-content: center; }
-      .cover-tagline { font-size: 20px; }
-      .photos-grid { grid-template-columns: repeat(3,1fr); }
-      .refs-grid { grid-template-columns: repeat(3,1fr); }
+    @media (max-width: 768px) {
+      .nav-inner {
+        gap: 4px;
+      }
+
+      .nav-logo-text {
+        display: none;
+      }
+
+      .nav-logo-name {
+        font-size: 14px;
+      }
+
+      .hire-me-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-avatar-placeholder {
+        margin-top: -60px;
+      }
+
+      .profile-details {
+        text-align: center;
+      }
+
+      .profile-location {
+        justify-content: center;
+      }
+
+      .profile-actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .cover-tagline {
+        font-size: 20px;
+      }
+
+      .cover-sub {
+        font-size: 13px;
+      }
+
+      .cover-text {
+        padding: 20px 16px 80px;
+      }
+
+      .share-options {
+        grid-template-columns: 1fr;
+      }
+
+      .post-bg-text {
+        font-size: 20px;
+      }
+
+      .reaction-picker {
+        transform: translateX(-30%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fb-nav {
+        padding: 0 8px;
+      }
+
+      .nav-action-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+
+      .nav-logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .hire-me-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
+      .profile-nav {
+        padding: 0 8px;
+      }
+
+      .pnav-item {
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      .fb-layout {
+        padding: 0 8px 40px;
+      }
+
+      .refs-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        padding: 0 8px 8px;
+      }
+
+      .ref-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+
+      .ref-name {
+        font-size: 11px;
+      }
+
+      .ref-role {
+        font-size: 10px;
+      }
+
+      .post-btn {
+        font-size: 13px;
+        padding: 8px 4px;
+      }
+
+      .post-btn i {
+        font-size: 16px;
+      }
+
+      .btn-primary-fb,
+      .btn-secondary-fb {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
     }
 
     /* =============================================
        REVEAL
     ============================================= */
     .reveal {
-      opacity: 0; transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
       transition: opacity 0.5s, transform 0.5s;
     }
-    .reveal.in { opacity: 1; transform: none; }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ================================================
-       TOP NAVBAR
-  ================================================ -->
+  <!-- TOP NAVBAR -->
   <nav class="fb-nav">
     <div class="nav-inner">
-      <!-- Left -->
       <div class="nav-logo">
         <div class="nav-logo-icon">f</div>
         <div>
@@ -819,30 +1690,24 @@
         </div>
       </div>
 
-      <!-- Center tabs -->
       <div class="nav-tabs">
-        <div class="nav-tab active" title="Home"><i class="fa-solid fa-house"></i></div>
-        <div class="nav-tab" title="About"><i class="fa-solid fa-user"></i></div>
-        <div class="nav-tab" title="Experience"><i class="fa-solid fa-briefcase"></i></div>
-        <div class="nav-tab" title="Services"><i class="fa-solid fa-list-check"></i></div>
-        <div class="nav-tab" title="Contact"><i class="fa-solid fa-envelope"></i></div>
+        <div class="nav-tab active" title="Home" data-section="home"><i class="fa-solid fa-house"></i></div>
+        <div class="nav-tab" title="About" data-section="about"><i class="fa-solid fa-user"></i></div>
+        <div class="nav-tab" title="Experience" data-section="experience"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="nav-tab" title="Services" data-section="services"><i class="fa-solid fa-list-check"></i></div>
+        <div class="nav-tab" title="Contact" data-section="contact"><i class="fa-solid fa-envelope"></i></div>
       </div>
 
-      <!-- Right -->
       <div class="nav-actions">
-        <button class="nav-action-btn" title="Email"><i class="fa-solid fa-envelope"></i></button>
-        <button class="nav-action-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
-        <a href="#contact"><button class="hire-me-btn">+ Hire Me</button></a>
+        <a href="mailto:daianabalcena021@gmail.com"><button class="nav-action-btn" title="Email"><i class="fa-solid fa-envelope"></i></button></a>
+        <a href="[wa.me](https://wa.me/639275545833)" target="_blank"><button class="nav-action-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></a>
+        <button class="hire-me-btn" onclick="scrollToSection('contact')">+ Hire Me</button>
       </div>
     </div>
   </nav>
 
-  <!-- ================================================
-       PROFILE SECTION (Cover + Avatar + Name)
-  ================================================ -->
-  <div class="profile-section" id="home">
-
-    <!-- Cover photo -->
+  <!-- PROFILE SECTION -->
+  <section class="profile-section" id="home">
     <div class="cover-photo">
       <div class="cover-text">
         <div class="cover-tagline">Organized. Reliable. Ready to Support Your Business. 🌸</div>
@@ -854,44 +1719,36 @@
       </div>
     </div>
 
-    <!-- Profile info row -->
     <div class="profile-info">
       <div class="profile-avatar-placeholder">👩</div>
-
       <div class="profile-details">
         <div class="profile-name">Diana C. Balcena</div>
         <div class="profile-title">Virtual Assistant | Customer Service Expert | Retail Professional</div>
         <div class="profile-location">
-          <i class="fa-solid fa-location-dot" style="color:#65676b;font-size:13px;"></i>
+          <i class="fa-solid fa-location-dot"></i>
           Cabuyao, Laguna, Philippines
         </div>
       </div>
-
       <div class="profile-actions">
-        <a href="#contact"><button class="btn-primary-fb"><i class="fa-solid fa-paper-plane fa-sm"></i> Send Message</button></a>
+        <button class="btn-primary-fb" onclick="scrollToSection('contact')"><i class="fa-solid fa-paper-plane fa-sm"></i> Send Message</button>
         <a href="mailto:daianabalcena021@gmail.com"><button class="btn-secondary-fb"><i class="fa-solid fa-envelope fa-sm"></i> Email Me</button></a>
       </div>
     </div>
 
-    <!-- Profile nav -->
     <div class="profile-nav">
-      <div class="pnav-item active" onclick="scrollTo('#home')">Posts</div>
-      <div class="pnav-item" onclick="scrollTo('#about')">About</div>
-      <div class="pnav-item" onclick="scrollTo('#experience')">Experience</div>
-      <div class="pnav-item" onclick="scrollTo('#services')">Services</div>
-      <div class="pnav-item" onclick="scrollTo('#contact')">Contact</div>
+      <div class="pnav-item active" data-section="home">Posts</div>
+      <div class="pnav-item" data-section="about">About</div>
+      <div class="pnav-item" data-section="experience">Experience</div>
+      <div class="pnav-item" data-section="services">Services</div>
+      <div class="pnav-item" data-section="contact">Contact</div>
     </div>
-  </div>
+  </section>
 
-  <!-- ================================================
-       MAIN LAYOUT
-  ================================================ -->
+  <!-- MAIN LAYOUT -->
   <div class="fb-layout">
 
-    <!-- ══ LEFT SIDEBAR ══ -->
-    <div class="fb-left" id="about">
-
-      <!-- Intro card -->
+    <!-- LEFT SIDEBAR -->
+    <aside class="fb-left" id="about">
       <div class="fb-card">
         <div class="card-title">Intro</div>
         <div class="intro-bio">
@@ -928,7 +1785,7 @@
         </div>
 
         <div class="fb-divider"></div>
-        <div class="card-section-label" style="padding-bottom:8px;">Skills</div>
+        <div class="card-section-label">Skills</div>
         <div class="skills-wrap">
           <span class="skill-chip">Customer Service</span>
           <span class="skill-chip">Communication</span>
@@ -945,23 +1802,21 @@
         </div>
       </div>
 
-      <!-- Photos (Services preview) -->
       <div class="fb-card">
         <div class="card-section-label">
           Services
-          <span class="card-see-all" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See all</span>
+          <span class="card-see-all" onclick="scrollToSection('services')">See all</span>
         </div>
         <div class="photos-grid">
-          <div class="photo-thumb" style="background:#e7f3ff;font-size:28px;">📧</div>
-          <div class="photo-thumb" style="background:#f0fff4;font-size:28px;">📅</div>
-          <div class="photo-thumb" style="background:#fff0f3;font-size:28px;">📱</div>
-          <div class="photo-thumb" style="background:#fffbf0;font-size:28px;">🗄️</div>
-          <div class="photo-thumb" style="background:#f8f0ff;font-size:28px;">🎧</div>
-          <div class="photo-thumb" style="background:#f0f8ff;font-size:28px;">✍️</div>
+          <div class="photo-thumb" style="background:#e7f3ff;">📧</div>
+          <div class="photo-thumb" style="background:#f0fff4;">📅</div>
+          <div class="photo-thumb" style="background:#fff0f3;">📱</div>
+          <div class="photo-thumb" style="background:#fffbf0;">🗄️</div>
+          <div class="photo-thumb" style="background:#f8f0ff;">🎧</div>
+          <div class="photo-thumb" style="background:#f0f8ff;">✍️</div>
         </div>
       </div>
 
-      <!-- References -->
       <div class="fb-card" id="references">
         <div class="card-section-label">
           References
@@ -985,14 +1840,13 @@
           </div>
         </div>
       </div>
+    </aside>
 
-    </div>
+    <!-- CENTER FEED -->
+    <main class="fb-center">
 
-    <!-- ══ CENTER FEED ══ -->
-    <div class="fb-center">
-
-      <!-- "Post" 1: Who is Diana? — colored bg post -->
-      <div class="post-card reveal">
+      <!-- Post 1: Intro -->
+      <article class="post-card reveal" data-post-id="1">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1012,24 +1866,105 @@
           </div>
         </div>
         <div class="post-reactions">
-          <div class="reaction-count">
-            <div class="reaction-icons">
-              <div class="reaction-icon r-like">👍</div>
-              <div class="reaction-icon r-love">❤️</div>
+          <div class="reaction-summary">
+            <div class="reaction-emojis">
+              <span class="reaction-emoji-icon like-icon">👍</span>
+              <span class="reaction-emoji-icon love-icon">❤️</span>
             </div>
-            <span>You and 47 others</span>
+            <span class="reaction-text">You and <span class="like-count">47</span> others</span>
           </div>
-          <span style="color:var(--fb-muted);font-size:14px;">12 comments</span>
+          <div class="post-stats">
+            <span class="comment-toggle" data-post-id="1"><span class="comment-count">12</span> comments</span>
+            <span class="share-count">3 shares</span>
+          </div>
         </div>
         <div class="post-btns">
-          <div class="post-btn liked"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
-          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
-          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+          <div class="reaction-picker-container">
+            <div class="reaction-picker" data-post-id="1">
+              <span class="reaction-option" data-reaction="like" data-emoji="👍">
+                👍
+                <span class="reaction-label">Like</span>
+              </span>
+              <span class="reaction-option" data-reaction="love" data-emoji="❤️">
+                ❤️
+                <span class="reaction-label">Love</span>
+              </span>
+              <span class="reaction-option" data-reaction="care" data-emoji="🥰">
+                🥰
+                <span class="reaction-label">Care</span>
+              </span>
+              <span class="reaction-option" data-reaction="haha" data-emoji="😂">
+                😂
+                <span class="reaction-label">Haha</span>
+              </span>
+              <span class="reaction-option" data-reaction="wow" data-emoji="😮">
+                😮
+                <span class="reaction-label">Wow</span>
+              </span>
+              <span class="reaction-option" data-reaction="sad" data-emoji="😢">
+                😢
+                <span class="reaction-label">Sad</span>
+              </span>
+              <span class="reaction-option" data-reaction="angry" data-emoji="😠">
+                😠
+                <span class="reaction-label">Angry</span>
+              </span>
+            </div>
+            <div class="post-btn like-btn" data-post-id="1">
+              <i class="fa-regular fa-thumbs-up"></i>
+              <span class="btn-text">Like</span>
+            </div>
+          </div>
+          <div class="post-btn comment-btn" data-post-id="1">
+            <i class="fa-regular fa-comment"></i> Comment
+          </div>
+          <div class="post-btn share-btn" data-post-id="1">
+            <i class="fa-solid fa-share"></i> Share
+          </div>
         </div>
-      </div>
+        <div class="comments-section" data-post-id="1">
+          <div class="comment-input-wrap">
+            <div class="comment-avatar">Y</div>
+            <div class="comment-input-box">
+              <input type="text" class="comment-input" placeholder="Write a comment..." data-post-id="1">
+              <button class="comment-send" data-post-id="1"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="comments-list" data-post-id="1">
+            <div class="comment-item">
+              <div class="comment-avatar" style="background:linear-gradient(135deg,#42b72a,#36a420);">J</div>
+              <div class="comment-content">
+                <div class="comment-bubble">
+                  <div class="comment-author">John Smith</div>
+                  <div class="comment-text">Great portfolio! Very professional presentation. 👏</div>
+                </div>
+                <div class="comment-actions">
+                  <span class="comment-action comment-like">Like</span>
+                  <span class="comment-action">Reply</span>
+                  <span class="comment-time">2h</span>
+                </div>
+              </div>
+            </div>
+            <div class="comment-item">
+              <div class="comment-avatar" style="background:linear-gradient(135deg,#f5576c,#f093fb);">M</div>
+              <div class="comment-content">
+                <div class="comment-bubble">
+                  <div class="comment-author">Maria Garcia</div>
+                  <div class="comment-text">Looking forward to working with you! 🌟</div>
+                </div>
+                <div class="comment-actions">
+                  <span class="comment-action comment-like">Like</span>
+                  <span class="comment-action">Reply</span>
+                  <span class="comment-time">1h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
 
-      <!-- "Post" 2: Why Hire Diana for VA -->
-      <div class="post-card reveal" id="services">
+      <!-- Post 2: Services -->
+      <article class="post-card reveal" data-post-id="2" id="services">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1042,69 +1977,100 @@
             <strong>Why my retail experience makes me an exceptional Virtual Assistant:</strong>
           </div>
 
-          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:12px;">
+          <div style="display:flex;flex-direction:column;gap:4px;">
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-solid fa-headset"></i></div>
               <div class="service-info">
                 <div class="s-name">Customer Support & Communication</div>
-                <div class="s-desc">6 years handling customers at Watsons, Penshoppe & HDPI — expert at resolving concerns professionally, building rapport, and maintaining a positive brand image via email, chat, or phone.</div>
+                <div class="s-desc">6 years handling customers at Watsons, Penshoppe & HDPI — expert at resolving concerns professionally.</div>
               </div>
             </div>
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-solid fa-calendar-check"></i></div>
               <div class="service-info">
                 <div class="s-name">Admin, Scheduling & Organization</div>
-                <div class="s-desc">Experienced in managing daily store operations, coordinating tasks across teams, maintaining accurate records and reports — directly transferable to calendar and inbox management.</div>
+                <div class="s-desc">Experienced in managing daily operations, coordinating tasks across teams.</div>
               </div>
             </div>
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-solid fa-database"></i></div>
               <div class="service-info">
                 <div class="s-name">Data Entry & Record Management</div>
-                <div class="s-desc">Handled cash register transactions, inventory tracking, and sales reporting with precision — ensuring 100% accuracy in data handling and documentation.</div>
+                <div class="s-desc">Handled transactions, inventory tracking, and sales reporting with precision.</div>
               </div>
             </div>
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-solid fa-envelope-open-text"></i></div>
               <div class="service-info">
                 <div class="s-name">Email & Inbox Management</div>
-                <div class="s-desc">Strong written communication skills developed through years of customer correspondence and professional reporting. Quick learner for email tools like Gmail, Outlook, and Mailchimp.</div>
+                <div class="s-desc">Strong written communication skills. Quick learner for email tools.</div>
               </div>
             </div>
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-brands fa-instagram"></i></div>
               <div class="service-info">
                 <div class="s-name">Social Media Assistance</div>
-                <div class="s-desc">Familiar with social media platforms and brand communication — able to assist with content scheduling, community engagement, and basic content creation using Canva.</div>
+                <div class="s-desc">Able to assist with content scheduling and community engagement.</div>
               </div>
             </div>
             <div class="service-row">
               <div class="service-icon-fb"><i class="fa-solid fa-magnifying-glass"></i></div>
               <div class="service-info">
                 <div class="s-name">Research & Lead Support</div>
-                <div class="s-desc">Detail-oriented research skills with strong internet proficiency. Able to support lead generation, competitor research, and product/market analysis tasks efficiently.</div>
+                <div class="s-desc">Detail-oriented research skills with strong internet proficiency.</div>
               </div>
             </div>
           </div>
         </div>
         <div class="post-reactions">
-          <div class="reaction-count">
-            <div class="reaction-icons">
-              <div class="reaction-icon r-like">👍</div>
-              <div class="reaction-icon r-care">🌟</div>
+          <div class="reaction-summary">
+            <div class="reaction-emojis">
+              <span class="reaction-emoji-icon like-icon">👍</span>
+              <span class="reaction-emoji-icon care-icon">🌟</span>
             </div>
-            <span>38 people found this helpful</span>
+            <span class="reaction-text"><span class="like-count">38</span> people found this helpful</span>
+          </div>
+          <div class="post-stats">
+            <span class="comment-toggle" data-post-id="2"><span class="comment-count">5</span> comments</span>
           </div>
         </div>
         <div class="post-btns">
-          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
-          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
-          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+          <div class="reaction-picker-container">
+            <div class="reaction-picker" data-post-id="2">
+              <span class="reaction-option" data-reaction="like" data-emoji="👍">👍<span class="reaction-label">Like</span></span>
+              <span class="reaction-option" data-reaction="love" data-emoji="❤️">❤️<span class="reaction-label">Love</span></span>
+              <span class="reaction-option" data-reaction="care" data-emoji="🥰">🥰<span class="reaction-label">Care</span></span>
+              <span class="reaction-option" data-reaction="haha" data-emoji="😂">😂<span class="reaction-label">Haha</span></span>
+              <span class="reaction-option" data-reaction="wow" data-emoji="😮">😮<span class="reaction-label">Wow</span></span>
+              <span class="reaction-option" data-reaction="sad" data-emoji="😢">😢<span class="reaction-label">Sad</span></span>
+              <span class="reaction-option" data-reaction="angry" data-emoji="😠">😠<span class="reaction-label">Angry</span></span>
+            </div>
+            <div class="post-btn like-btn" data-post-id="2">
+              <i class="fa-regular fa-thumbs-up"></i>
+              <span class="btn-text">Like</span>
+            </div>
+          </div>
+          <div class="post-btn comment-btn" data-post-id="2">
+            <i class="fa-regular fa-comment"></i> Comment
+          </div>
+          <div class="post-btn share-btn" data-post-id="2">
+            <i class="fa-solid fa-share"></i> Share
+          </div>
         </div>
-      </div>
+        <div class="comments-section" data-post-id="2">
+          <div class="comment-input-wrap">
+            <div class="comment-avatar">Y</div>
+            <div class="comment-input-box">
+              <input type="text" class="comment-input" placeholder="Write a comment..." data-post-id="2">
+              <button class="comment-send" data-post-id="2"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="comments-list" data-post-id="2"></div>
+        </div>
+      </article>
 
-      <!-- "Post" 3: Work Experience Timeline -->
-      <div class="post-card reveal" id="experience">
+      <!-- Post 3: Experience -->
+      <article class="post-card reveal" data-post-id="3" id="experience">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1115,78 +2081,100 @@
         <div class="post-body">
           <div class="post-text"><strong>📋 My Professional Journey</strong></div>
 
-          <!-- HDPI — Current -->
           <div class="exp-item">
             <div class="exp-logo">🏪</div>
             <div class="exp-details">
               <div class="exp-title">Sales Associate <span style="background:#e7f8e7;color:#1a7f37;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;">Current</span></div>
               <div class="exp-company">Hard Discount Philippines Inc. (HDPI)</div>
               <div class="exp-period">May 2024 – Present · Lakeside, Cabuyao</div>
-              <div class="exp-desc">Managing sales floor operations, assisting customers, handling transactions, maintaining product displays, and supporting daily store efficiency. Strong focus on customer satisfaction and operational accuracy.</div>
-              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Customer service, data handling, operations management</div>
+              <div class="exp-desc">Managing sales floor operations, assisting customers, handling transactions.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Customer service, data handling</div>
             </div>
           </div>
           <div class="fb-divider"></div>
 
-          <!-- Penshoppe -->
           <div class="exp-item">
             <div class="exp-logo">👗</div>
             <div class="exp-details">
               <div class="exp-title">Store Cashier / Sales Staff</div>
               <div class="exp-company">Penshoppe</div>
-              <div class="exp-period">Oct 2023 – Apr 2024 · SM Sta. Rosa, Laguna</div>
-              <div class="exp-desc">Handled point-of-sale transactions, assisted customers with product queries, managed fitting room operations, and supported merchandising and stock management.</div>
-              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Multi-tasking, communication, accuracy</div>
+              <div class="exp-period">Oct 2023 – Apr 2024 · SM Sta. Rosa</div>
+              <div class="exp-desc">Handled POS transactions, assisted customers, managed fitting room operations.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Multi-tasking, accuracy</div>
             </div>
           </div>
           <div class="fb-divider"></div>
 
-          <!-- Mandaue Foam -->
           <div class="exp-item">
             <div class="exp-logo">🪑</div>
             <div class="exp-details">
               <div class="exp-title">Store Cashier</div>
               <div class="exp-company">Mandaue Foam</div>
-              <div class="exp-period">Oct 2022 – Mar 2023 · Tagapo, Sta. Rosa, Laguna</div>
-              <div class="exp-desc">Processed customer payments, managed cash register operations, handled receipts and daily cash reports, and provided product information to customers.</div>
-              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Data entry, financial accuracy, reporting</div>
+              <div class="exp-period">Oct 2022 – Mar 2023 · Sta. Rosa</div>
+              <div class="exp-desc">Processed payments, managed cash register, handled daily reports.</div>
             </div>
           </div>
           <div class="fb-divider"></div>
 
-          <!-- Watsons -->
           <div class="exp-item">
             <div class="exp-logo">💊</div>
             <div class="exp-details">
               <div class="exp-title">Cashier</div>
-              <div class="exp-company">Watsons Personal Care Stores (Phils.) Inc.</div>
-              <div class="exp-period">Aug 2019 – Jul 2022 · SM Sta. Rosa, Laguna</div>
-              <div class="exp-desc">3-year tenure managing cashier operations, loyalty program enrolment, inventory coordination, and customer service excellence. Recognized for accuracy and professionalism.</div>
-              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Long-term reliability, customer relations, admin tasks</div>
+              <div class="exp-company">Watsons Personal Care Stores</div>
+              <div class="exp-period">Aug 2019 – Jul 2022 · SM Sta. Rosa</div>
+              <div class="exp-desc">3-year tenure managing cashier operations and customer service excellence.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Long-term reliability</div>
             </div>
           </div>
           <div class="fb-divider"></div>
 
-          <!-- Goldilocks -->
           <div class="exp-item">
             <div class="exp-logo">🍰</div>
             <div class="exp-details">
               <div class="exp-title">Store Crew</div>
-              <div class="exp-company">Goldilocks Bakeshops Bayan Walk</div>
-              <div class="exp-period">Sep 2018 – Mar 2019 · Cabuyao Bayan, Laguna</div>
-              <div class="exp-desc">Assisted customers, managed product display, handled food preparation support, and maintained store cleanliness and operational standards.</div>
+              <div class="exp-company">Goldilocks Bakeshops</div>
+              <div class="exp-period">Sep 2018 – Mar 2019 · Cabuyao</div>
+              <div class="exp-desc">Assisted customers, managed product display, maintained store operations.</div>
             </div>
           </div>
         </div>
         <div class="post-btns">
-          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
-          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
-          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+          <div class="reaction-picker-container">
+            <div class="reaction-picker" data-post-id="3">
+              <span class="reaction-option" data-reaction="like" data-emoji="👍">👍<span class="reaction-label">Like</span></span>
+              <span class="reaction-option" data-reaction="love" data-emoji="❤️">❤️<span class="reaction-label">Love</span></span>
+              <span class="reaction-option" data-reaction="care" data-emoji="🥰">🥰<span class="reaction-label">Care</span></span>
+              <span class="reaction-option" data-reaction="haha" data-emoji="😂">😂<span class="reaction-label">Haha</span></span>
+              <span class="reaction-option" data-reaction="wow" data-emoji="😮">😮<span class="reaction-label">Wow</span></span>
+              <span class="reaction-option" data-reaction="sad" data-emoji="😢">😢<span class="reaction-label">Sad</span></span>
+              <span class="reaction-option" data-reaction="angry" data-emoji="😠">😠<span class="reaction-label">Angry</span></span>
+            </div>
+            <div class="post-btn like-btn" data-post-id="3">
+              <i class="fa-regular fa-thumbs-up"></i>
+              <span class="btn-text">Like</span>
+            </div>
+          </div>
+          <div class="post-btn comment-btn" data-post-id="3">
+            <i class="fa-regular fa-comment"></i> Comment
+          </div>
+          <div class="post-btn share-btn" data-post-id="3">
+            <i class="fa-solid fa-share"></i> Share
+          </div>
         </div>
-      </div>
+        <div class="comments-section" data-post-id="3">
+          <div class="comment-input-wrap">
+            <div class="comment-avatar">Y</div>
+            <div class="comment-input-box">
+              <input type="text" class="comment-input" placeholder="Write a comment..." data-post-id="3">
+              <button class="comment-send" data-post-id="3"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="comments-list" data-post-id="3"></div>
+        </div>
+      </article>
 
-      <!-- "Post" 4: Education -->
-      <div class="post-card reveal">
+      <!-- Post 4: Education -->
+      <article class="post-card reveal" data-post-id="4">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1202,7 +2190,7 @@
             <div class="edu-details">
               <div class="edu-school">CITI Global College</div>
               <div class="edu-degree">Bachelor of Science in Tourism Management</div>
-              <div class="edu-year">2014 – 2018 · J.P. Rizal St., Cabuyao City, Laguna</div>
+              <div class="edu-year">2014 – 2018 · Cabuyao City, Laguna</div>
             </div>
           </div>
           <div class="fb-divider"></div>
@@ -1211,7 +2199,7 @@
             <div class="edu-details">
               <div class="edu-school">Cabuyao National High School</div>
               <div class="edu-degree">Secondary Education</div>
-              <div class="edu-year">2010 – 2014 · Brgy. Tres, Cabuyao City, Laguna</div>
+              <div class="edu-year">2010 – 2014</div>
             </div>
           </div>
           <div class="fb-divider"></div>
@@ -1220,19 +2208,47 @@
             <div class="edu-details">
               <div class="edu-school">North Marinig Elementary School</div>
               <div class="edu-degree">Primary Education</div>
-              <div class="edu-year">2009 – 2010 · Brgy. Marinig, Cabuyao City, Laguna</div>
+              <div class="edu-year">2009 – 2010</div>
             </div>
           </div>
         </div>
         <div class="post-btns">
-          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
-          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
-          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+          <div class="reaction-picker-container">
+            <div class="reaction-picker" data-post-id="4">
+              <span class="reaction-option" data-reaction="like" data-emoji="👍">👍<span class="reaction-label">Like</span></span>
+              <span class="reaction-option" data-reaction="love" data-emoji="❤️">❤️<span class="reaction-label">Love</span></span>
+              <span class="reaction-option" data-reaction="care" data-emoji="🥰">🥰<span class="reaction-label">Care</span></span>
+              <span class="reaction-option" data-reaction="haha" data-emoji="😂">😂<span class="reaction-label">Haha</span></span>
+              <span class="reaction-option" data-reaction="wow" data-emoji="😮">😮<span class="reaction-label">Wow</span></span>
+              <span class="reaction-option" data-reaction="sad" data-emoji="😢">😢<span class="reaction-label">Sad</span></span>
+              <span class="reaction-option" data-reaction="angry" data-emoji="😠">😠<span class="reaction-label">Angry</span></span>
+            </div>
+            <div class="post-btn like-btn" data-post-id="4">
+              <i class="fa-regular fa-thumbs-up"></i>
+              <span class="btn-text">Like</span>
+            </div>
+          </div>
+          <div class="post-btn comment-btn" data-post-id="4">
+            <i class="fa-regular fa-comment"></i> Comment
+          </div>
+          <div class="post-btn share-btn" data-post-id="4">
+            <i class="fa-solid fa-share"></i> Share
+          </div>
         </div>
-      </div>
+        <div class="comments-section" data-post-id="4">
+          <div class="comment-input-wrap">
+            <div class="comment-avatar">Y</div>
+            <div class="comment-input-box">
+              <input type="text" class="comment-input" placeholder="Write a comment..." data-post-id="4">
+              <button class="comment-send" data-post-id="4"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="comments-list" data-post-id="4"></div>
+        </div>
+      </article>
 
-      <!-- "Post" 5: Why hire Diana — motivational -->
-      <div class="post-card reveal">
+      <!-- Post 5: Motivational -->
+      <article class="post-card reveal" data-post-id="5">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1248,30 +2264,62 @@
             </div>
           </div>
           <div style="padding-top:12px;font-size:15px;color:var(--fb-text);line-height:1.65;">
-            My BS in Tourism Management taught me hospitality, communication, and attention to detail. My retail career built discipline, resilience, and a customer-first mindset. I'm not starting from scratch — I'm <strong>pivoting with purpose</strong>, bringing real-world skills that most VAs don't have.
+            My BS in Tourism Management taught me hospitality, communication, and attention to detail. My retail career built discipline, resilience, and a customer-first mindset. I'm not starting from scratch — I'm <strong>pivoting with purpose</strong>.
             <br><br>
-            If you need someone who shows up on time, handles pressure gracefully, communicates clearly, and cares about results — <strong>I'm your person.</strong> 🌟
+            If you need someone who shows up on time, handles pressure gracefully, and cares about results — <strong>I'm your person.</strong> 🌟
           </div>
         </div>
         <div class="post-reactions">
-          <div class="reaction-count">
-            <div class="reaction-icons">
-              <div class="reaction-icon r-love">❤️</div>
-              <div class="reaction-icon r-care">🌟</div>
-              <div class="reaction-icon r-like">👍</div>
+          <div class="reaction-summary">
+            <div class="reaction-emojis">
+              <span class="reaction-emoji-icon love-icon">❤️</span>
+              <span class="reaction-emoji-icon care-icon">🌟</span>
+              <span class="reaction-emoji-icon like-icon">👍</span>
             </div>
-            <span>89 people reacted</span>
+            <span class="reaction-text"><span class="like-count">89</span> people reacted</span>
+          </div>
+          <div class="post-stats">
+            <span class="comment-toggle" data-post-id="5"><span class="comment-count">24</span> comments</span>
+            <span class="share-count">12 shares</span>
           </div>
         </div>
         <div class="post-btns">
-          <div class="post-btn liked"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
-          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
-          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+          <div class="reaction-picker-container">
+            <div class="reaction-picker" data-post-id="5">
+              <span class="reaction-option" data-reaction="like" data-emoji="👍">👍<span class="reaction-label">Like</span></span>
+              <span class="reaction-option" data-reaction="love" data-emoji="❤️">❤️<span class="reaction-label">Love</span></span>
+              <span class="reaction-option" data-reaction="care" data-emoji="🥰">🥰<span class="reaction-label">Care</span></span>
+              <span class="reaction-option" data-reaction="haha" data-emoji="😂">😂<span class="reaction-label">Haha</span></span>
+              <span class="reaction-option" data-reaction="wow" data-emoji="😮">😮<span class="reaction-label">Wow</span></span>
+              <span class="reaction-option" data-reaction="sad" data-emoji="😢">😢<span class="reaction-label">Sad</span></span>
+              <span class="reaction-option" data-reaction="angry" data-emoji="😠">😠<span class="reaction-label">Angry</span></span>
+            </div>
+            <div class="post-btn like-btn" data-post-id="5">
+              <i class="fa-regular fa-thumbs-up"></i>
+              <span class="btn-text">Like</span>
+            </div>
+          </div>
+          <div class="post-btn comment-btn" data-post-id="5">
+            <i class="fa-regular fa-comment"></i> Comment
+          </div>
+          <div class="post-btn share-btn" data-post-id="5">
+            <i class="fa-solid fa-share"></i> Share
+          </div>
         </div>
-      </div>
+        <div class="comments-section" data-post-id="5">
+          <div class="comment-input-wrap">
+            <div class="comment-avatar">Y</div>
+            <div class="comment-input-box">
+              <input type="text" class="comment-input" placeholder="Write a comment..." data-post-id="5">
+              <button class="comment-send" data-post-id="5"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+          <div class="comments-list" data-post-id="5"></div>
+        </div>
+      </article>
 
-      <!-- "Post" 6: Contact form -->
-      <div class="post-card reveal" id="contact">
+      <!-- Post 6: Contact -->
+      <article class="post-card reveal" data-post-id="6" id="contact">
         <div class="post-header">
           <div class="post-avatar">D</div>
           <div class="post-meta">
@@ -1282,141 +2330,589 @@
         <div class="post-body">
           <div class="post-text"><strong>📩 Let's Connect!</strong></div>
           <div style="font-size:15px;color:var(--fb-text2);margin-bottom:16px;line-height:1.6;">
-            Interested in working together? Fill out this form and I'll get back to you within 24 hours. I'm open to full-time, part-time, and project-based VA roles.
+            Interested in working together? Fill out this form and I'll get back to you within 24 hours.
           </div>
 
-          <div class="contact-form-inner" style="padding:0;">
-            <form id="contactForm">
-              <div class="form-group">
-                <label class="form-label">Your Name</label>
-                <input type="text" name="name" class="form-input" placeholder="e.g. John Smith" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label">Type of VA Work</label>
-                <select name="va_type" class="form-input" required>
-                  <option value="" disabled selected>Select...</option>
-                  <option>Customer Support</option>
-                  <option>Email & Inbox Management</option>
-                  <option>Admin & Scheduling</option>
-                  <option>Data Entry & Research</option>
-                  <option>Social Media Assistance</option>
-                  <option>General VA / Multiple Tasks</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Your Message</label>
-                <textarea name="message" class="form-input" placeholder="Tell me about the role, hours, and what you need help with..." required></textarea>
-              </div>
-              <button type="submit" class="submit-btn" id="submitBtn">
-                <i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message
-              </button>
-            </form>
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-input" placeholder="e.g. John Smith" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Type of VA Work</label>
+              <select name="va_type" class="form-input" required>
+                <option value="" disabled selected>Select...</option>
+                <option>Customer Support</option>
+                <option>Email & Inbox Management</option>
+                <option>Admin & Scheduling</option>
+                <option>Data Entry & Research</option>
+                <option>Social Media Assistance</option>
+                <option>General VA / Multiple Tasks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Message</label>
+              <textarea name="message" class="form-input" placeholder="Tell me about the role..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <!-- SHARE MODAL -->
+  <div class="modal-overlay" id="shareModal">
+    <div class="share-modal">
+      <div class="modal-header">
+        <div class="modal-title">Share to</div>
+        <button class="modal-close" id="closeModal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="share-options">
+          <div class="share-option" data-platform="facebook">
+            <div class="share-option-icon fb"><i class="fa-brands fa-facebook-f"></i></div>
+            <div class="share-option-text">Facebook</div>
+          </div>
+          <div class="share-option" data-platform="twitter">
+            <div class="share-option-icon tw"><i class="fa-brands fa-twitter"></i></div>
+            <div class="share-option-text">Twitter / X</div>
+          </div>
+          <div class="share-option" data-platform="linkedin">
+            <div class="share-option-icon li"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="share-option-text">LinkedIn</div>
+          </div>
+          <div class="share-option" data-platform="whatsapp">
+            <div class="share-option-icon wa"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="share-option-text">WhatsApp</div>
+          </div>
+          <div class="share-option" data-platform="email">
+            <div class="share-option-icon em"><i class="fa-solid fa-envelope"></i></div>
+            <div class="share-option-text">Email</div>
+          </div>
+          <div class="share-option" data-platform="copy">
+            <div class="share-option-icon cp"><i class="fa-solid fa-link"></i></div>
+            <div class="share-option-text">Copy Link</div>
           </div>
         </div>
+        <div class="copy-link-wrap">
+          <input type="text" class="copy-link-input" id="shareLinkInput" readonly>
+          <button class="copy-link-btn" id="copyLinkBtn">Copy</button>
+        </div>
       </div>
+    </div>
+  </div>
 
-    </div><!-- end center -->
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span class="toast-emoji"></span>
+    <span class="toast-text"></span>
+  </div>
 
-  </div><!-- end fb-layout -->
-
-  <!-- ================================================
-       FOOTER
-  ================================================ -->
-  <div class="fb-footer">
+  <!-- FOOTER -->
+  <footer class="fb-footer">
     <div style="max-width:1260px;margin:0 auto;padding:16px 0;border-top:1px solid var(--fb-border);">
       Diana C. Balcena · Virtual Assistant Portfolio ·
       <a href="mailto:daianabalcena021@gmail.com">daianabalcena021@gmail.com</a> ·
       0927 554 5833 · Cabuyao, Laguna 🇵🇭 ·
-      © 2026
+      © 2025
     </div>
-  </div>
+  </footer>
 
-  <!-- Mobile bottom nav -->
-  <div class="mob-bottom-nav">
-    <div class="mob-nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <!-- MOBILE NAV -->
+  <nav class="mob-bottom-nav">
+    <a class="mob-nav-item active" data-section="home">
       <i class="fa-solid fa-house"></i>
       <span>Home</span>
-    </div>
-    <div class="mob-nav-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+    </a>
+    <a class="mob-nav-item" data-section="services">
       <i class="fa-solid fa-list-check"></i>
       <span>Services</span>
-    </div>
-    <div class="mob-nav-item" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
+    </a>
+    <a class="mob-nav-item" data-section="experience">
       <i class="fa-solid fa-briefcase"></i>
       <span>Work</span>
-    </div>
-    <div class="mob-nav-item" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    </a>
+    <a class="mob-nav-item" data-section="contact">
       <i class="fa-solid fa-envelope"></i>
       <span>Contact</span>
-    </div>
-  </div>
+    </a>
+  </nav>
 
-  <!-- EmailJS -->
   <script>
-    /* ── EmailJS ── */
-    emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // 🔑 Replace with Diana's EmailJS public key
+    // ============================================
+    // DATA STORAGE
+    // ============================================
+    const postData = {
+      1: { likes: 47, comments: 12, shares: 3, userReaction: null },
+      2: { likes: 38, comments: 5, shares: 0, userReaction: null },
+      3: { likes: 25, comments: 0, shares: 0, userReaction: null },
+      4: { likes: 18, comments: 0, shares: 0, userReaction: null },
+      5: { likes: 89, comments: 24, shares: 12, userReaction: null },
+      6: { likes: 0, comments: 0, shares: 0, userReaction: null }
+    };
 
-    const form    = document.getElementById('contactForm');
-    const subBtn  = document.getElementById('submitBtn');
+    const reactions = {
+      like: { emoji: '👍', color: '#1877f2', label: 'Like' },
+      love: { emoji: '❤️', color: '#f33e58', label: 'Love' },
+      care: { emoji: '🥰', color: '#f7b928', label: 'Care' },
+      haha: { emoji: '😂', color: '#f7b928', label: 'Haha' },
+      wow: { emoji: '😮', color: '#f7b928', label: 'Wow' },
+      sad: { emoji: '😢', color: '#f7b928', label: 'Sad' },
+      angry: { emoji: '😠', color: '#e9710f', label: 'Angry' }
+    };
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      subBtn.disabled = true;
-      subBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin fa-sm"></i> Sending...';
+    let currentSharePostId = null;
+    let hoverTimeout = null;
 
-      emailjs.sendForm(
-        'YOUR_SERVICE_ID',   // 🔑 Replace with Diana's EmailJS service ID
-        'YOUR_TEMPLATE_ID',  // 🔑 Replace with Diana's EmailJS template ID
-        this
-      )
-      .then(() => {
-        form.reset();
-        subBtn.innerHTML = '<i class="fa-solid fa-check fa-sm"></i> Message Sent!';
-        subBtn.style.background = '#42b72a';
-        setTimeout(() => {
-          subBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message';
-          subBtn.style.background = '';
-          subBtn.disabled = false;
-        }, 3000);
-      })
-      .catch(err => {
-        console.error(err);
-        alert('Message failed. Please email daianabalcena021@gmail.com directly.');
-        subBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message';
-        subBtn.disabled = false;
+    // ============================================
+    // TOAST
+    // ============================================
+    function showToast(message, emoji = '') {
+      const toast = document.getElementById('toast');
+      toast.querySelector('.toast-text').textContent = message;
+      toast.querySelector('.toast-emoji').textContent = emoji;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // ============================================
+    // REACTIONS - FACEBOOK STYLE
+    // ============================================
+    document.querySelectorAll('.reaction-picker-container').forEach(container => {
+      const picker = container.querySelector('.reaction-picker');
+      const likeBtn = container.querySelector('.like-btn');
+      const postId = likeBtn.dataset.postId;
+
+      // Show picker on hover (desktop)
+      container.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+          picker.classList.add('show');
+        }, 500);
+      });
+
+      container.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+          picker.classList.remove('show');
+        }, 300);
+      });
+
+      // Long press for mobile
+      let pressTimer;
+      likeBtn.addEventListener('touchstart', (e) => {
+        pressTimer = setTimeout(() => {
+          picker.classList.add('show');
+        }, 500);
+      });
+
+      likeBtn.addEventListener('touchend', () => {
+        clearTimeout(pressTimer);
+      });
+
+      // Quick click toggles like
+      likeBtn.addEventListener('click', (e) => {
+        if (!picker.classList.contains('show')) {
+          toggleLike(postId);
+        }
+      });
+
+      // Reaction selection
+      picker.querySelectorAll('.reaction-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const reaction = option.dataset.reaction;
+          selectReaction(postId, reaction);
+          picker.classList.remove('show');
+        });
       });
     });
 
-    /* ── Scroll reveal ── */
-    const ro = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    function toggleLike(postId) {
+      const post = postData[postId];
+      const btn = document.querySelector(`.like-btn[data-post-id="${postId}"]`);
+      const card = document.querySelector(`[data-post-id="${postId}"]`);
+      const likeCount = card.querySelector('.like-count');
 
-    /* ── Nav tab scroll indicator ── */
-    window.addEventListener('scroll', () => {
-      const tabs = document.querySelectorAll('.nav-tab');
-      const sections = ['home','services','experience','contact'];
-      sections.forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) {
-          tabs.forEach(t => t.classList.remove('active'));
-          if (tabs[i]) tabs[i].classList.add('active');
+      if (post.userReaction) {
+        // Remove reaction
+        post.likes--;
+        post.userReaction = null;
+        btn.innerHTML = '<i class="fa-regular fa-thumbs-up"></i> <span class="btn-text">Like</span>';
+        btn.classList.remove('reacted');
+        btn.style.color = '';
+      } else {
+        // Add like
+        post.likes++;
+        post.userReaction = 'like';
+        btn.innerHTML = '<span class="current-reaction">👍</span> <span class="btn-text">Like</span>';
+        btn.classList.add('reacted');
+        btn.style.color = reactions.like.color;
+      }
+
+      if (likeCount) likeCount.textContent = post.likes;
+      saveData();
+    }
+
+    function selectReaction(postId, reactionType) {
+      const post = postData[postId];
+      const btn = document.querySelector(`.like-btn[data-post-id="${postId}"]`);
+      const card = document.querySelector(`[data-post-id="${postId}"]`);
+      const likeCount = card.querySelector('.like-count');
+      const reaction = reactions[reactionType];
+
+      // If already reacted, don't increment
+      if (!post.userReaction) {
+        post.likes++;
+      }
+
+      post.userReaction = reactionType;
+      btn.innerHTML = `<span class="current-reaction">${reaction.emoji}</span> <span class="btn-text">${reaction.label}</span>`;
+      btn.classList.add('reacted', reactionType);
+      btn.style.color = reaction.color;
+
+      if (likeCount) likeCount.textContent = post.likes;
+      showToast(`You reacted with ${reaction.label}`, reaction.emoji);
+      saveData();
+    }
+
+    // ============================================
+    // COMMENTS
+    // ============================================
+    // Toggle comments visibility
+    document.querySelectorAll('.comment-btn, .comment-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const postId = btn.dataset.postId;
+        const section = document.querySelector(`.comments-section[data-post-id="${postId}"]`);
+        section.classList.toggle('show');
+        
+        if (section.classList.contains('show')) {
+          section.querySelector('.comment-input').focus();
         }
       });
     });
 
-    function scrollTo(id) {
-      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    // Submit comment
+    document.querySelectorAll('.comment-input').forEach(input => {
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.value.trim()) {
+          addComment(input.dataset.postId, input.value.trim());
+          input.value = '';
+        }
+      });
+
+      // Show/hide send button active state
+      input.addEventListener('input', () => {
+        const sendBtn = input.parentElement.querySelector('.comment-send');
+        sendBtn.classList.toggle('active', input.value.trim().length > 0);
+      });
+    });
+
+    document.querySelectorAll('.comment-send').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const postId = btn.dataset.postId;
+        const input = document.querySelector(`.comment-input[data-post-id="${postId}"]`);
+        if (input.value.trim()) {
+          addComment(postId, input.value.trim());
+          input.value = '';
+          btn.classList.remove('active');
+        }
+      });
+    });
+
+    function addComment(postId, text) {
+      const post = postData[postId];
+      post.comments++;
+
+      const commentsList = document.querySelector(`.comments-list[data-post-id="${postId}"]`);
+      const colors = ['#1877f2', '#42b72a', '#f5576c', '#f7b928', '#9c27b0'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      const commentHTML = `
+        <div class="comment-item">
+          <div class="comment-avatar" style="background:${color};">Y</div>
+          <div class="comment-content">
+            <div class="comment-bubble">
+              <div class="comment-author">You</div>
+              <div class="comment-text">${escapeHtml(text)}</div>
+            </div>
+            <div class="comment-actions">
+              <span class="comment-action comment-like">Like</span>
+              <span class="comment-action">Reply</span>
+              <span class="comment-time">Just now</span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      commentsList.insertAdjacentHTML('beforeend', commentHTML);
+
+      // Update count display
+      const card = document.querySelector(`[data-post-id="${postId}"]`);
+      const countEl = card.querySelector('.comment-count');
+      if (countEl) countEl.textContent = post.comments;
+
+      // Add like handler to new comment
+      const newComment = commentsList.lastElementChild;
+      newComment.querySelector('.comment-like').addEventListener('click', function() {
+        this.classList.toggle('liked');
+        this.textContent = this.classList.contains('liked') ? 'Liked' : 'Like';
+      });
+
+      showToast('Comment posted!', '💬');
+      saveData();
     }
+
+    // Existing comment likes
+    document.querySelectorAll('.comment-like').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.classList.toggle('liked');
+        this.textContent = this.classList.contains('liked') ? 'Liked' : 'Like';
+      });
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ============================================
+    // SHARE
+    // ============================================
+    const shareModal = document.getElementById('shareModal');
+    const shareLinkInput = document.getElementById('shareLinkInput');
+
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentSharePostId = btn.dataset.postId;
+        shareLinkInput.value = window.location.href;
+        shareModal.classList.add('show');
+      });
+    });
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+      shareModal.classList.remove('show');
+    });
+
+    shareModal.addEventListener('click', (e) => {
+      if (e.target === shareModal) {
+        shareModal.classList.remove('show');
+      }
+    });
+
+    // Share options
+    document.querySelectorAll('.share-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const platform = option.dataset.platform;
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent("Diana C. Balcena - Virtual Assistant Portfolio");
+        const text = encodeURIComponent("Check out this amazing Virtual Assistant portfolio!");
+
+        let shareUrl;
+        switch(platform) {
+          case 'facebook':
+            shareUrl = `[facebook.com](https://www.facebook.com/sharer/sharer.php?u=${url})`;
+            break;
+          case 'twitter':
+            shareUrl = `[twitter.com](https://twitter.com/intent/tweet?url=${url}&text=${text})`;
+            break;
+          case 'linkedin':
+            shareUrl = `[linkedin.com](https://www.linkedin.com/sharing/share-offsite/?url=${url})`;
+            break;
+          case 'whatsapp':
+            shareUrl = `[wa.me](https://wa.me/?text=${text}%20${url})`;
+            break;
+          case 'email':
+            shareUrl = `mailto:?subject=${title}&body=${text}%0A%0A${url}`;
+            window.location.href = shareUrl;
+            incrementShare();
+            shareModal.classList.remove('show');
+            return;
+          case 'copy':
+            copyToClipboard();
+            return;
+        }
+
+        if (shareUrl) {
+          window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes');
+          incrementShare();
+          shareModal.classList.remove('show');
+        }
+      });
+    });
+
+    document.getElementById('copyLinkBtn').addEventListener('click', copyToClipboard);
+
+    function copyToClipboard() {
+      shareLinkInput.select();
+      document.execCommand('copy');
+      
+      // Also try modern API
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareLinkInput.value);
+      }
+      
+      showToast('Link copied to clipboard!', '📋');
+      incrementShare();
+    }
+
+    function incrementShare() {
+      if (currentSharePostId && postData[currentSharePostId]) {
+        postData[currentSharePostId].shares++;
+        
+        const card = document.querySelector(`[data-post-id="${currentSharePostId}"]`);
+        const shareCount = card.querySelector('.share-count');
+        if (shareCount) {
+          shareCount.textContent = `${postData[currentSharePostId].shares} shares`;
+        }
+        
+        saveData();
+      }
+    }
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navHeight = document.querySelector('.fb-nav').offsetHeight;
+        const top = element.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    // Nav tabs click
+    document.querySelectorAll('.nav-tab, .pnav-item, .mob-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const section = item.dataset.section;
+        if (section) scrollToSection(section);
+      });
+    });
+
+    // Update active nav on scroll
+    function updateActiveNav() {
+      const sections = ['home', 'about', 'services', 'experience', 'contact'];
+      const navHeight = document.querySelector('.fb-nav').offsetHeight;
+      
+      let activeSection = 'home';
+      
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= navHeight + 100) {
+            activeSection = id;
+          }
+        }
+      });
+
+      // Update all navs
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.section === activeSection);
+      });
+      
+      document.querySelectorAll('.pnav-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.section === activeSection);
+      });
+      
+      document.querySelectorAll('.mob-nav-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.section === activeSection);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+
+    // ============================================
+    // SCROLL REVEAL
+    // ============================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ============================================
+    // CONTACT FORM
+    // ============================================
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+      // Simulate send (replace with EmailJS)
+      setTimeout(() => {
+        this.reset();
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+        btn.style.background = '#42b72a';
+        showToast('Message sent! Diana will respond within 24 hours.', '✅');
+        
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fa-brands fa-facebook-messenger"></i> Send Message';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }, 1500);
+    });
+
+    // ============================================
+    // LOCAL STORAGE
+    // ============================================
+    function saveData() {
+      localStorage.setItem('diana-portfolio', JSON.stringify(postData));
+    }
+
+    function loadData() {
+      const saved = localStorage.getItem('diana-portfolio');
+      if (saved) {
+        const data = JSON.parse(saved);
+        Object.assign(postData, data);
+        
+        // Restore UI state
+        Object.keys(postData).forEach(postId => {
+          const post = postData[postId];
+          const card = document.querySelector(`[data-post-id="${postId}"]`);
+          if (!card) return;
+
+          // Restore reaction
+          if (post.userReaction) {
+            const btn = card.querySelector('.like-btn');
+            const reaction = reactions[post.userReaction];
+            btn.innerHTML = `<span class="current-reaction">${reaction.emoji}</span> <span class="btn-text">${reaction.label}</span>`;
+            btn.classList.add('reacted', post.userReaction);
+            btn.style.color = reaction.color;
+          }
+
+          // Restore counts
+          const likeCount = card.querySelector('.like-count');
+          if (likeCount) likeCount.textContent = post.likes;
+
+          const commentCount = card.querySelector('.comment-count');
+          if (commentCount) commentCount.textContent = post.comments;
+
+          const shareCount = card.querySelector('.share-count');
+          if (shareCount) shareCount.textContent = `${post.shares} shares`;
+        });
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadData);
   </script>
 
 </body>
