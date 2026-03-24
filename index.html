@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diana Balcena — Virtual Assistant</title>
-
-  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diana C. Balcena — Virtual Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <!-- Fallback: use system fonts similar to Facebook -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style>
     /* =============================================
-       VARIABLES — Soft Pastel Palette
+       VARIABLES — Facebook-inspired palette
     ============================================= */
     :root {
-      --cream:       #fdf8f3;
-      --cream2:      #faf4ec;
-      --warm-white:  #fff9f6;
-      --blush:       #f9e8e8;
-      --blush2:      #f5dada;
-      --rose:        #e8a0a0;
-      --rose-deep:   #d4747474;
-      --accent:      #c97b7b;
-      --accent-dark: #b56464;
-      --accent-lo:   rgba(201,123,123,0.08);
-      --accent-bd:   rgba(201,123,123,0.22);
-      --mauve:       #d4a5a5;
-      --sage:        #a8b8a8;
-      --sage-lo:     rgba(168,184,168,0.1);
-      --text:        #2d2020;
-      --text2:       #4a3535;
-      --muted:       #9a7e7e;
-      --border:      rgba(212,165,165,0.25);
-      --border2:     rgba(212,165,165,0.4);
-      --shadow-sm:   0 2px 8px rgba(180,100,100,0.06);
-      --shadow-md:   0 6px 24px rgba(180,100,100,0.1);
-      --shadow-lg:   0 16px 48px rgba(180,100,100,0.12);
-      --font-d:      'Cormorant Garamond', serif;
-      --font-b:      'DM Sans', sans-serif;
+      --fb-blue:       #1877f2;
+      --fb-blue-dark:  #166fe5;
+      --fb-blue-lo:    rgba(24,119,242,0.08);
+      --fb-blue-bd:    rgba(24,119,242,0.2);
+      --fb-green:      #42b72a;
+      --fb-bg:         #f0f2f5;
+      --fb-white:      #ffffff;
+      --fb-card:       #ffffff;
+      --fb-border:     #dadde1;
+      --fb-text:       #050505;
+      --fb-text2:      #1c1e21;
+      --fb-muted:      #65676b;
+      --fb-light:      #e4e6eb;
+      --fb-hover:      #f2f2f2;
+      --fb-nav:        #ffffff;
+      --fb-shadow:     0 1px 2px rgba(0,0,0,0.2);
+      --fb-shadow-md:  0 2px 8px rgba(0,0,0,0.15);
+      --font:          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     /* =============================================
@@ -48,1428 +41,1382 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-b);
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.65;
+      font-family: var(--font);
+      background: var(--fb-bg);
+      color: var(--fb-text);
+      min-height: 100vh;
     }
 
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
 
-    /* Subtle dot pattern background */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: radial-gradient(circle, rgba(201,123,123,0.06) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     /* =============================================
-       NAVBAR
+       TOP NAVBAR — Facebook style
     ============================================= */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 22px 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.35s ease;
-    }
-    nav.scrolled {
-      background: rgba(253,248,243,0.95);
-      backdrop-filter: blur(16px);
-      padding: 14px 64px;
-      border-bottom: 1px solid var(--border2);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .nav-logo {
-      font-family: var(--font-d);
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-    .nav-logo span { color: var(--accent); font-style: italic; }
-
-    .nav-links {
-      display: flex;
-      gap: 36px; align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 13.5px; font-weight: 400;
-      color: var(--muted);
-      transition: color 0.2s;
-      letter-spacing: 0.01em;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-btn {
-      background: var(--accent) !important;
-      color: white !important;
-      padding: 10px 26px;
-      border-radius: 99px;
-      font-size: 13px !important;
-      font-weight: 500 !important;
-      transition: all 0.2s !important;
-      box-shadow: 0 4px 14px rgba(201,123,123,0.3);
-    }
-    .nav-btn:hover {
-      background: var(--accent-dark) !important;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(201,123,123,0.4) !important;
-    }
-
-    .nav-hamburger {
-      display: none;
-      background: none; border: none;
-      font-size: 20px; cursor: pointer;
-      color: var(--text);
-    }
-
-    /* Mobile panel */
-    .mob-panel {
-      display: none;
-      position: fixed; inset: 0;
-      background: var(--cream);
-      z-index: 99;
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 36px;
-    }
-    .mob-panel.open { display: flex; }
-    .mob-panel a {
-      font-family: var(--font-d);
-      font-size: 2rem; font-weight: 400;
-      color: var(--text); transition: color 0.2s;
-    }
-    .mob-panel a:hover { color: var(--accent); }
-
-    /* =============================================
-       HERO
-    ============================================= */
-    .hero {
-      min-height: 100vh;
+    .fb-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--fb-nav);
+      border-bottom: 1px solid var(--fb-border);
+      box-shadow: var(--fb-shadow);
+      height: 56px;
       display: flex; align-items: center;
-      padding: 110px 64px 80px;
-      position: relative; z-index: 1;
+      padding: 0 16px;
     }
 
-    /* Blobs */
-    .blob1 {
-      position: absolute;
-      width: 520px; height: 520px;
-      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-      background: radial-gradient(circle at 40% 40%, rgba(249,232,232,0.8), rgba(253,248,243,0));
-      top: -60px; right: -80px;
-      pointer-events: none; z-index: 0;
-      animation: morphBlob 8s ease-in-out infinite alternate;
-    }
-    .blob2 {
-      position: absolute;
-      width: 380px; height: 380px;
-      border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
-      background: radial-gradient(circle at 60% 60%, rgba(212,165,165,0.2), transparent);
-      bottom: 40px; left: 60px;
-      pointer-events: none; z-index: 0;
-      animation: morphBlob 10s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes morphBlob {
-      0%   { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
-      50%  { border-radius: 30% 70% 40% 60% / 40% 50% 60% 40%; }
-      100% { border-radius: 50% 50% 60% 40% / 60% 30% 70% 40%; }
-    }
-
-    .hero-inner {
-      max-width: 1180px; margin: 0 auto;
+    .nav-inner {
+      max-width: 1260px; margin: 0 auto; width: 100%;
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 80px; align-items: center;
-      width: 100%; position: relative; z-index: 1;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* Available badge */
-    .avail-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(168,184,168,0.12);
-      border: 1px solid rgba(168,184,168,0.3);
-      color: var(--sage);
-      font-size: 12px; font-weight: 500;
-      padding: 6px 16px; border-radius: 99px;
-      margin-bottom: 24px;
-      filter: saturate(1.3) brightness(0.85);
+    /* Left: Logo */
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
     }
-    .avail-dot {
-      width: 7px; height: 7px;
-      background: var(--sage);
+    .nav-logo-icon {
+      width: 40px; height: 40px;
+      background: var(--fb-blue);
       border-radius: 50%;
-      animation: glowPulse 2s infinite;
-      filter: saturate(1.3) brightness(0.85);
-    }
-    @keyframes glowPulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(168,184,168,0.5); }
-      50%      { box-shadow: 0 0 0 5px rgba(168,184,168,0); }
-    }
-
-    .hero-intro {
-      font-family: var(--font-d);
-      font-size: 1rem; font-weight: 400;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--mauve); margin-bottom: 14px;
-    }
-
-    .hero-title {
-      font-family: var(--font-d);
-      font-size: clamp(3rem, 5vw, 4.8rem);
-      font-weight: 400;
-      line-height: 1.1;
-      color: var(--text);
-      margin-bottom: 22px;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 15px; font-weight: 300;
-      color: var(--muted); line-height: 1.85;
-      max-width: 460px; margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex; gap: 14px; flex-wrap: wrap;
-      margin-bottom: 44px;
-    }
-
-    .hero-social { display: flex; gap: 10px; }
-    .hero-social a {
-      width: 38px; height: 38px;
-      border: 1px solid var(--border2);
-      border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      color: var(--mauve); font-size: 14px;
-      background: var(--warm-white);
-      transition: all 0.2s;
+      color: white; font-size: 22px; font-weight: 900;
+      font-family: Georgia, serif;
+      flex-shrink: 0;
     }
-    .hero-social a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
+    .nav-logo-text {
+      font-size: 13px; font-weight: 600;
+      color: var(--fb-muted);
+      line-height: 1.3;
     }
-
-    /* Hero photo */
-    .hero-photo-wrap {
-      position: relative;
-    }
-    .hero-photo-frame {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 120px 120px 40px 40px;
-      overflow: hidden;
-      background: var(--blush);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-    .hero-photo-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    /* Decorative ring */
-    .hero-photo-ring {
-      position: absolute;
-      inset: -12px;
-      border-radius: 128px 128px 48px 48px;
-      border: 1.5px dashed rgba(201,123,123,0.3);
-      pointer-events: none;
+    .nav-logo-name {
+      font-size: 15px; font-weight: 700;
+      color: var(--fb-text);
     }
 
-    /* Floating badges */
-    .hero-float {
-      position: absolute;
-      background: var(--warm-white);
-      border: 1px solid var(--border2);
-      border-radius: 14px;
-      padding: 12px 16px;
-      box-shadow: var(--shadow-md);
-      display: flex; align-items: center; gap: 10px;
+    /* Center: Nav tabs */
+    .nav-tabs {
+      display: flex; gap: 4px;
     }
-    .hero-float-1 { bottom: 60px; left: -40px; }
-    .hero-float-2 { top: 80px; right: -36px; }
-
-    .float-icon {
-      width: 34px; height: 34px;
+    .nav-tab {
+      padding: 8px 28px;
       border-radius: 8px;
+      cursor: pointer;
+      color: var(--fb-muted);
+      font-size: 20px;
+      transition: background 0.15s, color 0.15s;
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; flex-shrink: 0;
+      border-bottom: 3px solid transparent;
+      position: relative;
     }
-    .float-num {
-      font-family: var(--font-d);
-      font-size: 1.4rem; font-weight: 600;
-      color: var(--text); display: block; line-height: 1;
-    }
-    .float-lab { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .nav-tab:hover { background: var(--fb-hover); color: var(--fb-blue); }
+    .nav-tab.active { color: var(--fb-blue); border-bottom-color: var(--fb-blue); }
+    .nav-tab.active i { color: var(--fb-blue); }
 
-    /* =============================================
-       BUTTONS
-    ============================================= */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-b);
-      font-size: 13.5px; font-weight: 500;
-      padding: 13px 30px; border-radius: 99px;
-      cursor: pointer; transition: all 0.22s;
-      border: none; letter-spacing: 0.01em;
+    /* Right: Actions */
+    .nav-actions {
+      display: flex; align-items: center; gap: 8px;
+      justify-content: flex-end;
     }
-    .btn-rose {
-      background: var(--accent);
+    .nav-action-btn {
+      width: 40px; height: 40px;
+      background: var(--fb-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px; color: var(--fb-text);
+      transition: background 0.15s;
+      border: none;
+    }
+    .nav-action-btn:hover { background: #d8dadf; }
+
+    .hire-me-btn {
+      background: var(--fb-blue);
       color: white;
-      box-shadow: 0 4px 16px rgba(201,123,123,0.3);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
     }
-    .btn-rose:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(201,123,123,0.4);
-    }
-    .btn-ghost {
-      background: var(--warm-white);
-      color: var(--text2);
-      border: 1.5px solid var(--border2);
-    }
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .btn-full { width: 100%; justify-content: center; }
+    .hire-me-btn:hover { background: var(--fb-blue-dark); }
 
     /* =============================================
-       SECTIONS
+       COVER + PROFILE — Facebook Profile style
     ============================================= */
-    section { padding: 100px 64px; position: relative; z-index: 1; }
-    .section-inner { max-width: 1180px; margin: 0 auto; }
-
-    .section-eyebrow {
-      font-family: var(--font-d);
-      font-size: 0.88rem; font-weight: 400;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px;
-      display: block;
+    .profile-section {
+      background: var(--fb-white);
+      border-bottom: 1px solid var(--fb-border);
+      margin-bottom: 16px;
     }
 
-    .section-title {
-      font-family: var(--font-d);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400; line-height: 1.18;
-      color: var(--text);
-    }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-title span { font-weight: 300; }
-
-    .section-sub {
-      font-size: 14.5px; font-weight: 300;
-      color: var(--muted); line-height: 1.85;
-      max-width: 500px; margin-top: 14px;
-    }
-
-    /* =============================================
-       STATS
-    ============================================= */
-    .stats-strip {
-      background: var(--blush);
-      border-top: 1px solid var(--border2);
-      border-bottom: 1px solid var(--border2);
-      padding: 36px 64px;
-      position: relative; z-index: 1;
-    }
-    .stats-inner {
-      max-width: 1180px; margin: 0 auto;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap; gap: 28px;
-    }
-    .stat-item { text-align: center; }
-    .stat-num {
-      font-family: var(--font-d);
-      font-size: 2.6rem; font-weight: 400;
-      color: var(--accent); display: block; line-height: 1;
-    }
-    .stat-lab {
-      font-size: 12px; font-weight: 400;
-      color: var(--muted); margin-top: 4px; letter-spacing: 0.04em;
-    }
-
-    /* =============================================
-       SERVICES
-    ============================================= */
-    #services { background: var(--cream2); }
-
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 52px;
-      flex-wrap: wrap; gap: 24px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .svc-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px 28px;
-      transition: all 0.3s;
+    .cover-photo {
+      height: 350px;
+      background: linear-gradient(135deg, #1877f2 0%, #42a5f5 40%, #1565c0 100%);
       position: relative;
       overflow: hidden;
     }
-    .svc-card::after {
+
+    /* Cover pattern overlay */
+    .cover-photo::before {
       content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--rose), var(--mauve));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .svc-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-      border-color: var(--border2);
-    }
-    .svc-card:hover::after { transform: scaleX(1); }
-
-    .svc-icon {
-      width: 50px; height: 50px;
-      background: var(--blush);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; color: var(--accent);
-      margin-bottom: 18px;
-    }
-    .svc-name {
-      font-family: var(--font-d);
-      font-size: 1.25rem; font-weight: 500;
-      color: var(--text); margin-bottom: 10px;
-    }
-    .svc-desc {
-      font-size: 13.5px; font-weight: 300;
-      color: var(--muted); line-height: 1.75;
-      margin-bottom: 18px;
-    }
-    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .stag {
-      font-size: 11px; font-weight: 500;
-      padding: 4px 10px; border-radius: 99px;
-      background: var(--blush);
-      color: var(--accent);
-      border: 1px solid rgba(201,123,123,0.2);
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
     }
 
-    /* =============================================
-       ABOUT
-    ============================================= */
-    #about .section-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
+    /* Cover text overlay */
+    .cover-text {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px 32px 100px;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+    }
+    .cover-tagline {
+      font-size: 28px; font-weight: 700;
+      color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      max-width: 600px; line-height: 1.3;
+    }
+    .cover-sub {
+      font-size: 15px; color: rgba(255,255,255,0.85);
+      margin-top: 6px; text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
 
-    .about-photos {
-      position: relative; height: 540px;
-    }
-    .about-img-a {
-      position: absolute;
-      top: 0; left: 0;
-      width: 73%; height: 80%;
-      object-fit: cover;
+    /* Available badge on cover */
+    .cover-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.95);
       border-radius: 20px;
-      box-shadow: var(--shadow-md);
+      padding: 8px 16px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--fb-green);
+      box-shadow: var(--fb-shadow-md);
     }
-    .about-img-b {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 52%; height: 52%;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 5px solid var(--cream);
-      box-shadow: var(--shadow-md);
+    .cover-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--fb-green); border-radius: 50%;
+      animation: pulse 2s infinite;
     }
-    .about-quote-chip {
-      position: absolute;
-      bottom: 100px; left: 10px;
-      background: var(--warm-white);
-      border: 1px solid var(--border2);
-      border-radius: 14px;
-      padding: 14px 18px;
-      font-family: var(--font-d);
-      font-size: 0.95rem; font-style: italic;
-      color: var(--accent);
-      box-shadow: var(--shadow-sm);
-      max-width: 200px;
-      z-index: 2;
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(66,183,42,0.4); }
+      50%      { box-shadow: 0 0 0 5px rgba(66,183,42,0); }
     }
 
-    .about-body {
-      font-size: 14.5px; font-weight: 300;
-      color: var(--muted); line-height: 1.9;
-      margin: 20px 0 30px;
-    }
-
-    .tools-label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--mauve); margin-bottom: 12px;
-    }
-    .tools-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-    .tool-pill {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 12.5px; font-weight: 400;
-      color: var(--text2);
-      background: var(--warm-white);
-      border: 1px solid var(--border2);
-      padding: 6px 13px; border-radius: 10px;
-      transition: all 0.2s;
-    }
-    .tool-pill i { color: var(--accent); font-size: 11px; }
-    .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* =============================================
-       WORK SAMPLES
-    ============================================= */
-    #work { background: var(--warm-white); }
-
-    .work-header {
+    /* Profile area below cover */
+    .profile-info {
+      max-width: 1260px; margin: 0 auto;
+      padding: 0 16px 16px;
       display: flex;
-      justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 48px;
-      flex-wrap: wrap; gap: 20px;
+      gap: 16px;
+      position: relative;
     }
 
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 18px;
+    .profile-avatar-wrap {
+      position: relative;
+      margin-top: -80px;
+      flex-shrink: 0;
     }
-
-    .work-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-    .work-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-
-    .work-thumb {
-      height: 160px;
+    .profile-avatar {
+      width: 168px; height: 168px;
+      border-radius: 50%;
+      border: 4px solid var(--fb-white);
+      background: var(--fb-light);
+      object-fit: cover;
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem;
+      overflow: hidden;
+      box-shadow: var(--fb-shadow-md);
     }
-    .work-body { padding: 22px; }
-    .work-tag {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 7px;
+    .profile-avatar-placeholder {
+      width: 168px; height: 168px;
+      border-radius: 50%;
+      border: 4px solid var(--fb-white);
+      background: linear-gradient(135deg, #1877f2, #42a5f5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 64px; color: white;
+      box-shadow: var(--fb-shadow-md);
+      flex-shrink: 0;
+      margin-top: -80px;
     }
-    .work-title {
-      font-family: var(--font-d);
-      font-size: 1.1rem; font-weight: 500;
-      color: var(--text); margin-bottom: 8px;
+
+    .profile-details {
+      flex: 1;
+      padding-bottom: 4px;
     }
-    .work-desc {
-      font-size: 13px; font-weight: 300;
-      color: var(--muted); line-height: 1.65;
+    .profile-name {
+      font-size: 28px; font-weight: 800;
+      color: var(--fb-text); line-height: 1.2;
     }
-    .work-result {
-      margin-top: 12px;
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 500;
-      color: var(--sage);
-      background: var(--sage-lo);
-      padding: 4px 10px; border-radius: 99px;
-      filter: saturate(1.2) brightness(0.75);
+    .profile-title {
+      font-size: 16px; color: var(--fb-muted);
+      margin-top: 4px;
+    }
+    .profile-location {
+      font-size: 14px; color: var(--fb-muted);
+      margin-top: 4px;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .profile-actions {
+      display: flex; gap: 8px; align-items: center;
+      padding-bottom: 4px; flex-shrink: 0;
+    }
+    .btn-primary-fb {
+      background: var(--fb-blue);
+      color: white; border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; display: flex;
+      align-items: center; gap: 6px;
+      transition: background 0.15s;
+    }
+    .btn-primary-fb:hover { background: var(--fb-blue-dark); }
+    .btn-secondary-fb {
+      background: var(--fb-light);
+      color: var(--fb-text); border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; display: flex;
+      align-items: center; gap: 6px;
+      transition: background 0.15s;
+    }
+    .btn-secondary-fb:hover { background: #d8dadf; }
+
+    /* Profile nav tabs */
+    .profile-nav {
+      max-width: 1260px; margin: 0 auto;
+      padding: 0 16px;
+      border-top: 1px solid var(--fb-border);
+      display: flex; gap: 4px;
+      overflow-x: auto;
+    }
+    .profile-nav::-webkit-scrollbar { display: none; }
+    .pnav-item {
+      padding: 14px 16px;
+      font-size: 15px; font-weight: 600;
+      color: var(--fb-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.15s, background 0.15s;
+      border-radius: 8px 8px 0 0;
+    }
+    .pnav-item:hover { background: var(--fb-hover); color: var(--fb-blue); }
+    .pnav-item.active { color: var(--fb-blue); border-bottom-color: var(--fb-blue); }
+
+    /* =============================================
+       MAIN LAYOUT — Facebook 3-col (left, center, right)
+    ============================================= */
+    .fb-layout {
+      max-width: 1260px; margin: 0 auto;
+      padding: 0 16px 40px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 16px;
+      align-items: start;
     }
 
     /* =============================================
-       TESTIMONIALS
+       FB CARD
     ============================================= */
-    #testimonials { background: var(--blush); }
-
-    .tgrid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 18px; margin-top: 48px;
+    .fb-card {
+      background: var(--fb-card);
+      border-radius: 8px;
+      box-shadow: var(--fb-shadow);
+      padding: 12px 0;
+      margin-bottom: 16px;
     }
 
-    .tcard {
-      background: var(--warm-white);
-      border: 1px solid var(--border2);
-      border-radius: 20px;
-      padding: 28px;
-      transition: box-shadow 0.3s, transform 0.3s;
+    .card-title {
+      font-size: 20px; font-weight: 700;
+      color: var(--fb-text);
+      padding: 0 16px 12px;
     }
-    .tcard:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-    .tcard-stars { color: #d4a574; font-size: 12px; margin-bottom: 14px; }
-    .tcard-text {
-      font-family: var(--font-d);
-      font-size: 1.05rem; font-weight: 300;
-      font-style: italic; line-height: 1.75;
-      color: var(--text2); margin-bottom: 22px;
+    .card-section-label {
+      font-size: 17px; font-weight: 700;
+      color: var(--fb-text);
+      padding: 8px 16px 4px;
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .tcard-divider {
-      height: 1px; background: var(--border2);
-      margin-bottom: 18px;
+    .card-see-all {
+      font-size: 14px; font-weight: 600;
+      color: var(--fb-blue); cursor: pointer;
     }
-    .tcard-meta { display: flex; align-items: center; gap: 12px; }
-    .tcard-av {
+    .card-see-all:hover { text-decoration: underline; }
+
+    /* =============================================
+       INTRO CARD (Left sidebar)
+    ============================================= */
+    .intro-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 16px;
+      font-size: 15px; color: var(--fb-text2);
+      line-height: 1.4;
+    }
+    .intro-item i {
+      color: var(--fb-muted);
+      width: 20px; text-align: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .intro-item strong { color: var(--fb-text); }
+
+    .intro-bio {
+      padding: 8px 16px;
+      font-size: 15px; color: var(--fb-text2);
+      line-height: 1.6; text-align: center;
+      border-bottom: 1px solid var(--fb-border);
+      margin-bottom: 8px;
+    }
+
+    /* Skill tags */
+    .skills-wrap {
+      padding: 8px 16px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .skill-chip {
+      background: var(--fb-blue-lo);
+      color: var(--fb-blue);
+      border: 1px solid var(--fb-blue-bd);
+      border-radius: 99px;
+      padding: 5px 12px;
+      font-size: 13px; font-weight: 600;
+      transition: background 0.15s;
+      cursor: default;
+    }
+    .skill-chip:hover { background: rgba(24,119,242,0.14); }
+
+    /* =============================================
+       TIMELINE / POSTS (Center feed)
+    ============================================= */
+
+    /* Create post box */
+    .create-post {
+      background: var(--fb-card);
+      border-radius: 8px;
+      box-shadow: var(--fb-shadow);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .create-post-top {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .post-avatar-sm {
       width: 40px; height: 40px;
       border-radius: 50%;
-      background: var(--blush2);
+      background: linear-gradient(135deg, #1877f2, #42a5f5);
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
+      color: white; font-size: 16px; font-weight: 700;
+      flex-shrink: 0;
     }
-    .tcard-name { font-size: 13.5px; font-weight: 500; color: var(--text); }
-    .tcard-role { font-size: 12px; color: var(--muted); }
+    .post-input-fake {
+      flex: 1;
+      background: var(--fb-hover);
+      border-radius: 99px;
+      padding: 10px 16px;
+      font-size: 15px; color: var(--fb-muted);
+      cursor: text;
+    }
+    .post-actions {
+      display: flex; border-top: 1px solid var(--fb-border);
+      padding-top: 8px; gap: 4px;
+    }
+    .post-action-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 8px;
+      border-radius: 6px; cursor: pointer;
+      font-size: 14px; font-weight: 600;
+      color: var(--fb-muted);
+      transition: background 0.15s;
+    }
+    .post-action-btn:hover { background: var(--fb-hover); }
+
+    /* Post / Feed card */
+    .post-card {
+      background: var(--fb-card);
+      border-radius: 8px;
+      box-shadow: var(--fb-shadow);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .post-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px;
+    }
+    .post-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1877f2, #42a5f5);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 16px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .post-meta { flex: 1; }
+    .post-author { font-size: 15px; font-weight: 600; color: var(--fb-text); }
+    .post-time { font-size: 13px; color: var(--fb-muted); display: flex; align-items: center; gap: 4px; }
+    .post-more { color: var(--fb-muted); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+    .post-more:hover { background: var(--fb-hover); }
+
+    .post-body { padding: 0 16px 12px; }
+    .post-text {
+      font-size: 15px; color: var(--fb-text);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .post-text.large {
+      font-size: 24px; font-weight: 400; line-height: 1.4;
+    }
+
+    /* Post with colored background */
+    .post-bg {
+      margin: 0 -16px;
+      padding: 28px 32px;
+      text-align: center;
+      min-height: 220px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .post-bg-text {
+      font-size: 26px; font-weight: 700;
+      line-height: 1.35; color: white;
+    }
+
+    .post-img {
+      width: 100%;
+      background: var(--fb-light);
+      min-height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+      overflow: hidden;
+    }
+    .post-img img { width: 100%; object-fit: cover; }
+
+    /* Reaction bar */
+    .post-reactions {
+      padding: 6px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--fb-border);
+    }
+    .reaction-count {
+      font-size: 15px; color: var(--fb-muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .reaction-icons { display: flex; gap: 2px; }
+    .reaction-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      border: 2px solid var(--fb-white);
+    }
+    .r-like { background: #1877f2; }
+    .r-love { background: #f33e58; }
+    .r-care { background: #f7b928; }
+
+    .post-btns {
+      display: flex; gap: 4px;
+      padding: 4px 8px;
+      border-top: 1px solid var(--fb-border);
+    }
+    .post-btn {
+      flex: 1; display: flex; align-items: center;
+      justify-content: center; gap: 6px;
+      padding: 8px; border-radius: 6px;
+      font-size: 14px; font-weight: 600;
+      color: var(--fb-muted); cursor: pointer;
+      transition: background 0.15s;
+    }
+    .post-btn:hover { background: var(--fb-hover); }
+    .post-btn.liked { color: var(--fb-blue); }
 
     /* =============================================
-       PACKAGES
+       EXPERIENCE CARD — FB Timeline style
     ============================================= */
-    #packages { background: var(--cream2); }
+    .exp-item {
+      display: flex; gap: 12px;
+      padding: 12px 16px;
+      transition: background 0.15s;
+    }
+    .exp-item:hover { background: var(--fb-hover); }
 
-    .pkg-header { text-align: center; margin-bottom: 52px; }
+    .exp-logo {
+      width: 56px; height: 56px;
+      border-radius: 8px;
+      background: var(--fb-light);
+      border: 1px solid var(--fb-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+      overflow: hidden;
+    }
+    .exp-details { flex: 1; }
+    .exp-title { font-size: 15px; font-weight: 600; color: var(--fb-text); }
+    .exp-company { font-size: 14px; color: var(--fb-muted); }
+    .exp-period { font-size: 13px; color: var(--fb-muted); }
+    .exp-location { font-size: 13px; color: var(--fb-muted); }
+    .exp-desc { font-size: 14px; color: var(--fb-text2); margin-top: 6px; line-height: 1.5; }
 
-    .pkg-grid {
+    /* VA highlight badge */
+    .va-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #e7f3ff;
+      color: var(--fb-blue);
+      border: 1px solid #b3d4ff;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 12px; font-weight: 600;
+      margin-top: 6px;
+    }
+
+    /* =============================================
+       EDUCATION CARD
+    ============================================= */
+    .edu-item {
+      display: flex; gap: 12px;
+      padding: 12px 16px;
+      transition: background 0.15s;
+    }
+    .edu-item:hover { background: var(--fb-hover); }
+    .edu-logo {
+      width: 56px; height: 56px;
+      border-radius: 8px;
+      background: var(--fb-blue-lo);
+      border: 1px solid var(--fb-blue-bd);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .edu-details { flex: 1; }
+    .edu-school { font-size: 15px; font-weight: 600; color: var(--fb-text); }
+    .edu-degree { font-size: 14px; color: var(--fb-muted); }
+    .edu-year { font-size: 13px; color: var(--fb-muted); }
+
+    /* =============================================
+       PHOTOS GRID
+    ============================================= */
+    .photos-grid {
       display: grid;
       grid-template-columns: repeat(3,1fr);
-      gap: 20px;
+      gap: 4px; padding: 0 0 4px;
     }
-
-    .pkg-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 30px;
+    .photo-thumb {
+      aspect-ratio: 1;
+      background: var(--fb-light);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; cursor: pointer;
+      transition: filter 0.2s;
       position: relative;
-      transition: all 0.3s;
     }
-    .pkg-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .pkg-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(160deg, #fff5f5 0%, var(--warm-white) 100%);
-    }
-
-    .pkg-badge {
-      position: absolute; top: -1px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent); color: white;
-      font-size: 10px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 5px 16px; border-radius: 0 0 10px 10px;
-    }
-
-    .pkg-name {
-      font-family: var(--font-d);
-      font-size: 1.5rem; font-weight: 400;
-      color: var(--text); margin-bottom: 6px;
-    }
-    .pkg-price {
-      font-family: var(--font-d);
-      font-size: 2.4rem; font-weight: 400;
-      color: var(--accent); margin-bottom: 4px;
-    }
-    .pkg-price span { font-size: 0.95rem; color: var(--muted); }
-    .pkg-desc {
-      font-size: 13px; font-weight: 300;
-      color: var(--muted); line-height: 1.7;
-      margin-bottom: 22px; padding-bottom: 22px;
-      border-bottom: 1px solid var(--border);
-    }
-    .pkg-features {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 10px;
-      margin-bottom: 30px;
-    }
-    .pkg-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 300; color: var(--text2);
-    }
-    .pkg-features li i { color: var(--accent); font-size: 10px; flex-shrink: 0; }
+    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-thumb:hover { filter: brightness(0.9); }
+    .photo-thumb:first-child { border-radius: 0; }
 
     /* =============================================
-       CONTACT
+       SERVICES CARD — FB style
     ============================================= */
-    #contact { background: var(--warm-white); }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 64px; align-items: start;
+    .service-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px;
+      transition: background 0.15s; cursor: default;
+      border-radius: 8px;
     }
-
-    .contact-heading {
-      font-family: var(--font-d);
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      font-weight: 400; line-height: 1.2;
-      color: var(--text); margin-bottom: 16px;
-    }
-    .contact-heading em { font-style: italic; color: var(--accent); }
-
-    .contact-subtext {
-      font-size: 14px; font-weight: 300;
-      color: var(--muted); line-height: 1.85;
-      margin-bottom: 36px;
-    }
-
-    .contact-methods { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
-    .cm {
-      display: flex; align-items: center; gap: 14px;
-      font-size: 14px; font-weight: 300; color: var(--muted);
-      transition: color 0.2s;
-    }
-    a.cm:hover { color: var(--accent); }
-    .cm-icon {
-      width: 40px; height: 40px;
-      background: var(--blush);
-      border: 1px solid var(--border2);
-      border-radius: 10px;
+    .service-row:hover { background: var(--fb-hover); }
+    .service-icon-fb {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--fb-blue-lo);
       display: flex; align-items: center; justify-content: center;
-      font-size: 14px; color: var(--accent); flex-shrink: 0;
-      transition: background 0.2s;
+      font-size: 18px; color: var(--fb-blue); flex-shrink: 0;
     }
-    a.cm:hover .cm-icon { background: rgba(201,123,123,0.15); }
+    .service-info .s-name { font-size: 15px; font-weight: 600; color: var(--fb-text); }
+    .service-info .s-desc { font-size: 13px; color: var(--fb-muted); }
 
-    /* Availability pill */
-    .avail-pill {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(168,184,168,0.1);
-      border: 1px solid rgba(168,184,168,0.3);
-      border-radius: 12px; padding: 14px 18px;
+    /* =============================================
+       CONTACT FORM CARD
+    ============================================= */
+    .contact-form-inner { padding: 0 16px 16px; }
+    .form-group {
+      margin-bottom: 12px;
     }
-    .avail-pill-dot { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; animation: glowPulse 2s infinite; flex-shrink: 0; filter: brightness(0.8); }
-    .avail-pill-text { font-size: 13px; font-weight: 400; color: var(--sage); filter: brightness(0.75); }
-    .avail-pill-sub { font-size: 12px; color: var(--muted); }
-
-    /* Form card */
-    .form-card {
-      background: var(--cream);
-      border: 1px solid var(--border2);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: var(--shadow-sm);
+    .form-label {
+      font-size: 13px; font-weight: 600;
+      color: var(--fb-muted);
+      display: block; margin-bottom: 6px;
     }
-    .form-card-title {
-      font-family: var(--font-d);
-      font-size: 1.4rem; font-weight: 400;
-      color: var(--text); margin-bottom: 28px;
-    }
-
-    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .fgroup { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-    .fgroup.s2 { grid-column: 1/-1; }
-    .flabel {
-      font-size: 11.5px; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: var(--mauve);
-    }
-    .finput {
-      background: var(--warm-white);
-      border: 1.5px solid var(--border2);
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-family: var(--font-b);
-      font-size: 14px; color: var(--text);
+    .form-input {
+      width: 100%;
+      background: var(--fb-hover);
+      border: 1px solid var(--fb-border);
+      border-radius: 6px;
+      padding: 11px 14px;
+      font-family: var(--font);
+      font-size: 15px; color: var(--fb-text);
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
     }
-    .finput::placeholder { color: rgba(154,126,126,0.5); }
-    .finput:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(201,123,123,0.08);
+    .form-input::placeholder { color: var(--fb-muted); }
+    .form-input:focus {
+      border-color: var(--fb-blue);
+      box-shadow: 0 0 0 2px rgba(24,119,242,0.2);
       background: white;
     }
-    textarea.finput { resize: vertical; min-height: 110px; }
-    select.finput { cursor: pointer; }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+    .submit-btn {
+      width: 100%;
+      background: var(--fb-blue);
+      color: white; border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 17px; font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: var(--font);
+    }
+    .submit-btn:hover { background: var(--fb-blue-dark); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* =============================================
+       DIVIDER
+    ============================================= */
+    .fb-divider {
+      height: 1px;
+      background: var(--fb-border);
+      margin: 8px 16px;
+    }
+
+    /* =============================================
+       FRIENDS / REFERENCES
+    ============================================= */
+    .refs-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 8px;
+      padding: 0 16px 8px;
+    }
+    .ref-item {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; cursor: pointer;
+      padding: 8px; border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .ref-item:hover { background: var(--fb-hover); }
+    .ref-avatar {
+      width: 80px; height: 80px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #e4e6eb, #c9cdd4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin-bottom: 6px; overflow: hidden;
+    }
+    .ref-name { font-size: 13px; font-weight: 600; color: var(--fb-text); line-height: 1.3; }
+    .ref-role { font-size: 12px; color: var(--fb-muted); }
+
+    /* =============================================
+       RIGHT SIDEBAR CARD (Spotlight / Hire Me CTA)
+    ============================================= */
+    .cta-card {
+      background: linear-gradient(135deg, #1877f2 0%, #1565c0 100%);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      box-shadow: var(--fb-shadow);
+    }
+    .cta-emoji { font-size: 40px; margin-bottom: 12px; }
+    .cta-title { font-size: 18px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .cta-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 16px; line-height: 1.5; }
+    .cta-btn {
+      background: white; color: var(--fb-blue);
+      border: none; padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; display: inline-block;
+      transition: background 0.15s;
+    }
+    .cta-btn:hover { background: #f0f2f5; }
 
     /* =============================================
        FOOTER
     ============================================= */
-    footer {
-      background: var(--text);
-      padding: 56px 64px 32px;
+    .fb-footer {
+      max-width: 1260px; margin: 0 auto;
+      padding: 0 16px 24px;
+      font-size: 13px; color: var(--fb-muted);
+      line-height: 1.8;
     }
-    .footer-top {
-      max-width: 1180px; margin: 0 auto;
-      display: flex;
-      justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 28px;
-      padding-bottom: 32px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+    .fb-footer a { color: var(--fb-muted); }
+    .fb-footer a:hover { text-decoration: underline; }
+
+    /* =============================================
+       MOBILE NAV (bottom bar)
+    ============================================= */
+    .mob-bottom-nav {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--fb-white);
+      border-top: 1px solid var(--fb-border);
+      padding: 8px 0;
+      z-index: 200;
+      justify-content: space-around;
     }
-    .footer-logo {
-      font-family: var(--font-d);
-      font-size: 1.5rem; font-weight: 400;
-      color: var(--cream);
+    .mob-nav-item {
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 10px; color: var(--fb-muted);
+      padding: 4px 12px;
+      border-radius: 8px; cursor: pointer;
+      transition: color 0.15s;
     }
-    .footer-logo span { color: var(--rose); font-style: italic; }
-    .footer-tagline {
-      font-size: 12.5px; font-weight: 300;
-      color: rgba(255,255,255,0.4); margin-top: 4px;
+    .mob-nav-item i { font-size: 22px; margin-bottom: 2px; }
+    .mob-nav-item.active { color: var(--fb-blue); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .fb-layout { grid-template-columns: 1fr; }
+      .cover-photo { height: 250px; }
+      .profile-avatar-placeholder { width: 120px; height: 120px; font-size: 48px; margin-top: -60px; }
+      .profile-name { font-size: 22px; }
+      .nav-tabs { display: none; }
+      .mob-bottom-nav { display: flex; }
+      body { padding-bottom: 64px; }
     }
 
-    .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a {
-      font-size: 13px; color: rgba(255,255,255,0.45);
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--rose); }
-
-    .footer-social { display: flex; gap: 10px; }
-    .footer-social a {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.4); font-size: 13px;
-      transition: all 0.2s;
-    }
-    .footer-social a:hover { border-color: var(--rose); color: var(--rose); }
-
-    .footer-copy {
-      max-width: 1180px; margin: 0 auto;
-      font-size: 12px;
-      color: rgba(255,255,255,0.25);
-      text-align: center;
+    @media (max-width: 600px) {
+      .fb-nav { padding: 0 12px; }
+      .profile-info { flex-wrap: wrap; }
+      .profile-actions { width: 100%; }
+      .btn-primary-fb, .btn-secondary-fb { flex: 1; justify-content: center; }
+      .cover-tagline { font-size: 20px; }
+      .photos-grid { grid-template-columns: repeat(3,1fr); }
+      .refs-grid { grid-template-columns: repeat(3,1fr); }
     }
 
     /* =============================================
        REVEAL
     ============================================= */
     .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
     }
     .reveal.in { opacity: 1; transform: none; }
-    .rd1 { transition-delay: 0.1s; }
-    .rd2 { transition-delay: 0.2s; }
-    .rd3 { transition-delay: 0.3s; }
-    .rd4 { transition-delay: 0.4s; }
-    .rd5 { transition-delay: 0.5s; }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 1024px) {
-      .hero-inner     { grid-template-columns: 1fr; }
-      .hero-photo-wrap { display: none; }
-      #about .section-inner { grid-template-columns: 1fr; }
-      .about-photos   { display: none; }
-      .services-grid  { grid-template-columns: 1fr 1fr; }
-      .work-grid      { grid-template-columns: 1fr 1fr; }
-      .tgrid          { grid-template-columns: 1fr 1fr; }
-      .pkg-grid       { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-      .contact-inner  { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      nav.scrolled { padding: 12px 24px; }
-      .nav-links   { display: none; }
-      .nav-hamburger { display: block; }
-      section      { padding: 72px 24px; }
-      .stats-strip { padding: 28px 24px; }
-      .hero        { padding: 96px 24px 60px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .work-grid   { grid-template-columns: 1fr; }
-      .tgrid       { grid-template-columns: 1fr; }
-      .frow        { grid-template-columns: 1fr; }
-      footer       { padding: 40px 24px 24px; }
-      .footer-top  { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-      .footer-social { justify-content: center; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- blobs -->
-  <div class="blob1" aria-hidden="true"></div>
-  <div class="blob2" aria-hidden="true"></div>
-
   <!-- ================================================
-       NAVBAR
+       TOP NAVBAR
   ================================================ -->
-  <nav id="navbar">
-    <div class="nav-logo">Diana <span>Balcena</span></div>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Portfolio</a></li>
-      <!-- <li><a href="#packages">Packages</a></li> -->
-      <li><a href="#contact" class="nav-btn">Hire Me ✦</a></li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+  <nav class="fb-nav">
+    <div class="nav-inner">
+      <!-- Left -->
+      <div class="nav-logo">
+        <div class="nav-logo-icon">f</div>
+        <div>
+          <div class="nav-logo-name">Diana C. Balcena</div>
+          <div class="nav-logo-text">Virtual Assistant Portfolio</div>
+        </div>
+      </div>
+
+      <!-- Center tabs -->
+      <div class="nav-tabs">
+        <div class="nav-tab active" title="Home"><i class="fa-solid fa-house"></i></div>
+        <div class="nav-tab" title="About"><i class="fa-solid fa-user"></i></div>
+        <div class="nav-tab" title="Experience"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="nav-tab" title="Services"><i class="fa-solid fa-list-check"></i></div>
+        <div class="nav-tab" title="Contact"><i class="fa-solid fa-envelope"></i></div>
+      </div>
+
+      <!-- Right -->
+      <div class="nav-actions">
+        <button class="nav-action-btn" title="Email"><i class="fa-solid fa-envelope"></i></button>
+        <button class="nav-action-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
+        <a href="#contact"><button class="hire-me-btn">+ Hire Me</button></a>
+      </div>
+    </div>
   </nav>
 
-  <div class="mob-panel" id="mobPanel">
-    <a href="#services"  onclick="closeMob()">Services</a>
-    <a href="#about"     onclick="closeMob()">About</a>
-    <a href="#work"      onclick="closeMob()">Portfolio</a>
-    <a href="#packages"  onclick="closeMob()">Packages</a>
-    <a href="#contact"   onclick="closeMob()">Hire Me</a>
-  </div>
-
   <!-- ================================================
-       HERO
+       PROFILE SECTION (Cover + Avatar + Name)
   ================================================ -->
-  <section class="hero">
-    <div class="hero-inner">
+  <div class="profile-section" id="home">
 
-      <div>
-        <div class="avail-badge"><span class="avail-dot"></span> Available for new clients</div>
-        <p class="hero-intro">Virtual Assistant & Remote Support</p>
-        <h1 class="hero-title">
-          Your Business,<br>
-          <em>Effortlessly</em><br>
-          Organised.
-        </h1>
-        <p class="hero-sub">
-          I help busy entrepreneurs and business owners reclaim their time — handling admin, emails, social media, and more so you can focus on what truly matters.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-rose">Let's Work Together <i class="fa-solid fa-arrow-right fa-xs"></i></a>
-          <a href="#work" class="btn btn-ghost">View My Work</a>
-        </div>
-        <div class="hero-social">
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="mailto:daianabalcena021@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        </div>
+    <!-- Cover photo -->
+    <div class="cover-photo">
+      <div class="cover-text">
+        <div class="cover-tagline">Organized. Reliable. Ready to Support Your Business. 🌸</div>
+        <div class="cover-sub">Transitioning from Retail Excellence to Virtual Assistance</div>
       </div>
-
-      <!-- Photo -->
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-ring"></div>
-        <div class="hero-photo-frame">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80&auto=format" alt="Diana Balcena" />
-        </div>
-        <div class="hero-float hero-float-1">
-          <div class="float-icon" style="background:var(--blush);">
-            <i class="fa-solid fa-star" style="color:var(--accent);"></i>
-          </div>
-          <div>
-            <span class="float-num">5.0</span>
-            <div class="float-lab">Client Rating</div>
-          </div>
-        </div>
-        <div class="hero-float hero-float-2">
-          <div class="float-icon" style="background:var(--sage-lo);">
-            <i class="fa-solid fa-check" style="color:var(--sage);filter:brightness(0.75)"></i>
-          </div>
-          <div>
-            <span class="float-num">200+</span>
-            <div class="float-lab">Tasks Done</div>
-          </div>
-        </div>
+      <div class="cover-badge">
+        <span class="dot"></span>
+        Open to VA Opportunities
       </div>
-
     </div>
-  </section>
 
-  <!-- ================================================
-       STATS
-  ================================================ -->
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-item reveal"><span class="stat-num">3+</span><p class="stat-lab">Years Experience</p></div>
-      <div class="stat-item reveal rd1"><span class="stat-num">50+</span><p class="stat-lab">Happy Clients</p></div>
-      <div class="stat-item reveal rd2"><span class="stat-num">200+</span><p class="stat-lab">Projects Completed</p></div>
-      <div class="stat-item reveal rd3"><span class="stat-num">100%</span><p class="stat-lab">Client Satisfaction</p></div>
-      <div class="stat-item reveal rd4"><span class="stat-num">24h</span><p class="stat-lab">Response Time</p></div>
+    <!-- Profile info row -->
+    <div class="profile-info">
+      <div class="profile-avatar-placeholder">👩</div>
+
+      <div class="profile-details">
+        <div class="profile-name">Diana C. Balcena</div>
+        <div class="profile-title">Virtual Assistant | Customer Service Expert | Retail Professional</div>
+        <div class="profile-location">
+          <i class="fa-solid fa-location-dot" style="color:#65676b;font-size:13px;"></i>
+          Cabuyao, Laguna, Philippines
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <a href="#contact"><button class="btn-primary-fb"><i class="fa-solid fa-paper-plane fa-sm"></i> Send Message</button></a>
+        <a href="mailto:daianabalcena021@gmail.com"><button class="btn-secondary-fb"><i class="fa-solid fa-envelope fa-sm"></i> Email Me</button></a>
+      </div>
+    </div>
+
+    <!-- Profile nav -->
+    <div class="profile-nav">
+      <div class="pnav-item active" onclick="scrollTo('#home')">Posts</div>
+      <div class="pnav-item" onclick="scrollTo('#about')">About</div>
+      <div class="pnav-item" onclick="scrollTo('#experience')">Experience</div>
+      <div class="pnav-item" onclick="scrollTo('#services')">Services</div>
+      <div class="pnav-item" onclick="scrollTo('#contact')">Contact</div>
     </div>
   </div>
 
   <!-- ================================================
-       SERVICES
+       MAIN LAYOUT
   ================================================ -->
-  <section id="services">
-    <div class="section-inner">
-      <div class="services-header">
-        <div>
-          <span class="section-eyebrow reveal">✦ What I Do</span>
-          <h2 class="section-title reveal">Services I <em>Offer</em></h2>
-          <p class="section-sub reveal">Comprehensive support tailored to your needs — so you can focus on growth.</p>
+  <div class="fb-layout">
+
+    <!-- ══ LEFT SIDEBAR ══ -->
+    <div class="fb-left" id="about">
+
+      <!-- Intro card -->
+      <div class="fb-card">
+        <div class="card-title">Intro</div>
+        <div class="intro-bio">
+          Detail-oriented and highly organized professional with 6+ years of customer service and retail experience. Now channeling strong communication, time management, and problem-solving skills into Virtual Assistance — ready to help businesses run smoother, faster, and smarter. 🚀
         </div>
-        <!-- <a href="#contact" class="btn btn-ghost reveal">Get a Free Consult</a> -->
+
+        <div class="intro-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Sales Associate at <strong>Hard Discount Philippines Inc.</strong></span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Studied <strong>BS Tourism Management</strong> at CITI Global College</span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>From <strong>Cabuyao, Laguna, Philippines</strong></span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span><strong>daianabalcena021@gmail.com</strong></span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-phone"></i>
+          <span><strong>0927 554 5833</strong></span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>Available <strong>Full-time / Part-time</strong></span>
+        </div>
+        <div class="intro-item">
+          <i class="fa-solid fa-globe"></i>
+          <span>Open to <strong>Remote Work Worldwide</strong></span>
+        </div>
+
+        <div class="fb-divider"></div>
+        <div class="card-section-label" style="padding-bottom:8px;">Skills</div>
+        <div class="skills-wrap">
+          <span class="skill-chip">Customer Service</span>
+          <span class="skill-chip">Communication</span>
+          <span class="skill-chip">Data Entry</span>
+          <span class="skill-chip">Email Management</span>
+          <span class="skill-chip">Scheduling</span>
+          <span class="skill-chip">Problem Solving</span>
+          <span class="skill-chip">Time Management</span>
+          <span class="skill-chip">Teamwork</span>
+          <span class="skill-chip">Computer Literate</span>
+          <span class="skill-chip">Cash Handling</span>
+          <span class="skill-chip">Inventory</span>
+          <span class="skill-chip">MS Office</span>
+        </div>
       </div>
 
-      <div class="services-grid">
-        <div class="svc-card reveal">
-          <div class="svc-icon"><i class="fa-solid fa-calendar-check"></i></div>
-          <h3 class="svc-name">Admin & Calendar</h3>
-          <p class="svc-desc">Scheduling meetings, managing calendars, travel arrangements, and keeping your operations running smoothly every day.</p>
-          <div class="svc-tags"><span class="stag">Google Cal</span><span class="stag">Calendly</span><span class="stag">Notion</span></div>
+      <!-- Photos (Services preview) -->
+      <div class="fb-card">
+        <div class="card-section-label">
+          Services
+          <span class="card-see-all" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See all</span>
         </div>
-
-        <div class="svc-card reveal rd1">
-          <div class="svc-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
-          <h3 class="svc-name">Email Management</h3>
-          <p class="svc-desc">Inbox zero systems, professional replies, email filtering, and newsletter management that keeps you in control.</p>
-          <div class="svc-tags"><span class="stag">Gmail</span><span class="stag">Outlook</span><span class="stag">Mailchimp</span></div>
-        </div>
-
-        <div class="svc-card reveal rd2">
-          <div class="svc-icon"><i class="fa-brands fa-instagram"></i></div>
-          <h3 class="svc-name">Social Media</h3>
-          <p class="svc-desc">Content calendars, post scheduling, community engagement, and growth strategies across all major platforms.</p>
-          <div class="svc-tags"><span class="stag">Buffer</span><span class="stag">Canva</span><span class="stag">Hootsuite</span></div>
-        </div>
-
-        <div class="svc-card reveal">
-          <div class="svc-icon"><i class="fa-solid fa-headset"></i></div>
-          <h3 class="svc-name">Customer Support</h3>
-          <p class="svc-desc">Responding to inquiries, handling escalations professionally, and maintaining strong client relationships for you.</p>
-          <div class="svc-tags"><span class="stag">Zendesk</span><span class="stag">Freshdesk</span><span class="stag">Intercom</span></div>
-        </div>
-
-        <div class="svc-card reveal rd1">
-          <div class="svc-icon"><i class="fa-solid fa-database"></i></div>
-          <h3 class="svc-name">Data Entry & Research</h3>
-          <p class="svc-desc">Accurate data entry, internet research, lead generation, competitor analysis, and organized database management.</p>
-          <div class="svc-tags"><span class="stag">Excel</span><span class="stag">Sheets</span><span class="stag">Airtable</span></div>
-        </div>
-
-        <div class="svc-card reveal rd2">
-          <div class="svc-icon"><i class="fa-solid fa-file-pen"></i></div>
-          <h3 class="svc-name">Content & Copywriting</h3>
-          <p class="svc-desc">Blog posts, newsletters, product descriptions, and email campaigns — written content that connects and converts.</p>
-          <div class="svc-tags"><span class="stag">WordPress</span><span class="stag">Grammarly</span><span class="stag">ChatGPT</span></div>
+        <div class="photos-grid">
+          <div class="photo-thumb" style="background:#e7f3ff;font-size:28px;">📧</div>
+          <div class="photo-thumb" style="background:#f0fff4;font-size:28px;">📅</div>
+          <div class="photo-thumb" style="background:#fff0f3;font-size:28px;">📱</div>
+          <div class="photo-thumb" style="background:#fffbf0;font-size:28px;">🗄️</div>
+          <div class="photo-thumb" style="background:#f8f0ff;font-size:28px;">🎧</div>
+          <div class="photo-thumb" style="background:#f0f8ff;font-size:28px;">✍️</div>
         </div>
       </div>
+
+      <!-- References -->
+      <div class="fb-card" id="references">
+        <div class="card-section-label">
+          References
+          <span class="card-see-all">3 references</span>
+        </div>
+        <div class="refs-grid">
+          <div class="ref-item">
+            <div class="ref-avatar">👩‍💼</div>
+            <div class="ref-name">Ms. Florenda Gonzales</div>
+            <div class="ref-role">Supervisor, Watsons</div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-avatar">👨‍💼</div>
+            <div class="ref-name">Mr. Adam Calma</div>
+            <div class="ref-role">Store Manager, Goldilocks</div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-avatar">👨‍💻</div>
+            <div class="ref-name">Mr. Michael Mabunga</div>
+            <div class="ref-role">Software Dev, Impact SG</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
 
-  <!-- ================================================
-       ABOUT
-  ================================================ -->
-  <section id="about">
-    <div class="section-inner">
+    <!-- ══ CENTER FEED ══ -->
+    <div class="fb-center">
 
-      <div class="about-photos reveal">
-        <img class="about-img-a" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=700&q=80&auto=format" alt="Working" />
-        <img class="about-img-b" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80&auto=format" alt="Collaborating" />
-        <div class="about-quote-chip">"Helping you do more with less."</div>
-      </div>
-
-      <div>
-        <span class="section-eyebrow reveal">✦ About Me</span>
-        <h2 class="section-title reveal">Hi, I'm <em>Diana</em> —<br><span>Your Remote Right Hand</span></h2>
-        <p class="about-body reveal">
-          I'm a dedicated Virtual Assistant with 3+ years of experience supporting entrepreneurs, coaches, and small business owners across the US, UK, and Australia. My background in business administration paired with my love for organization makes me the ideal partner for professionals who need reliable, proactive support.
-          <br><br>
-          I don't just complete tasks — I become a true extension of your team, invested in your growth and always one step ahead.
-        </p>
-
-        <p class="tools-label reveal">Tools I Work With</p>
-        <div class="tools-wrap reveal">
-          <div class="tool-pill"><i class="fa-brands fa-google"></i> Google Workspace</div>
-          <div class="tool-pill"><i class="fa-brands fa-slack"></i> Slack</div>
-          <div class="tool-pill"><i class="fa-brands fa-trello"></i> Trello</div>
-          <div class="tool-pill"><i class="fa-solid fa-bookmark"></i> Notion</div>
-          <div class="tool-pill"><i class="fa-brands fa-asana"></i> Asana</div>
-          <div class="tool-pill"><i class="fa-solid fa-table"></i> Excel</div>
-          <div class="tool-pill"><i class="fa-brands fa-canva"></i> Canva</div>
-          <div class="tool-pill"><i class="fa-brands fa-wordpress"></i> WordPress</div>
-          <div class="tool-pill"><i class="fa-solid fa-envelope"></i> Mailchimp</div>
-          <div class="tool-pill"><i class="fa-solid fa-video"></i> Zoom</div>
-        </div>
-
-        <div class="hero-actions reveal">
-          <a href="#contact" class="btn btn-rose">Work With Me</a>
-          <a href="#" class="btn btn-ghost"><i class="fa-solid fa-download fa-xs"></i> Download CV</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================================================
-       WORK SAMPLES
-  ================================================ -->
-  <section id="work">
-    <div class="section-inner">
-      <div class="work-header">
-        <div>
-          <span class="section-eyebrow reveal">✦ Portfolio</span>
-          <h2 class="section-title reveal">Work <em>Samples</em></h2>
-          <p class="section-sub reveal">Real results from real clients.</p>
-        </div>
-      </div>
-      <div class="work-grid">
-
-        <div class="work-card reveal">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#fce4e4,#f9d0d0);">📧</div>
-          <div class="work-body">
-            <p class="work-tag">Email Management</p>
-            <h4 class="work-title">Inbox Zero for E-commerce CEO</h4>
-            <p class="work-desc">Set up a complete inbox system reducing email response time by 60% and achieving inbox zero within 2 weeks.</p>
-            <span class="work-result"><i class="fa-solid fa-arrow-trend-up fa-xs"></i> 60% faster responses</span>
+      <!-- "Post" 1: Who is Diana? — colored bg post -->
+      <div class="post-card reveal">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-globe fa-xs"></i> Public · Pinned</div>
           </div>
+          <div class="post-more">···</div>
         </div>
-
-        <div class="work-card reveal rd1">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#fdeee4,#fae0d0);">📅</div>
-          <div class="work-body">
-            <p class="work-tag">Calendar Management</p>
-            <h4 class="work-title">Executive Calendar Overhaul</h4>
-            <p class="work-desc">Managed calendars across 3 time zones, eliminated scheduling conflicts for 6 months running.</p>
-            <span class="work-result"><i class="fa-solid fa-check fa-xs"></i> Zero conflicts in 6 months</span>
-          </div>
-        </div>
-
-        <div class="work-card reveal rd2">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#fce4f0,#f9d0e6);">📱</div>
-          <div class="work-body">
-            <p class="work-tag">Social Media</p>
-            <h4 class="work-title">Instagram Growth for Coaching Brand</h4>
-            <p class="work-desc">Managed daily posting and engagement. Grew follower count 45% in 3 months with a content calendar.</p>
-            <span class="work-result"><i class="fa-solid fa-arrow-trend-up fa-xs"></i> +45% followers</span>
-          </div>
-        </div>
-
-        <div class="work-card reveal">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#fdf4e4,#faebd0);">🗄️</div>
-          <div class="work-body">
-            <p class="work-tag">Data Entry</p>
-            <h4 class="work-title">CRM Database Clean-Up</h4>
-            <p class="work-desc">Cleaned and organized 5,000+ client records in HubSpot CRM, improving sales team efficiency by 35%.</p>
-            <span class="work-result"><i class="fa-solid fa-arrow-trend-up fa-xs"></i> 35% efficiency gain</span>
-          </div>
-        </div>
-
-        <div class="work-card reveal rd1">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#eae4fc,#d8d0f9);">🎧</div>
-          <div class="work-body">
-            <p class="work-tag">Customer Support</p>
-            <h4 class="work-title">Support Desk Setup</h4>
-            <p class="work-desc">Built and managed a Zendesk system from scratch, handling 50+ tickets daily with 98% satisfaction rate.</p>
-            <span class="work-result"><i class="fa-solid fa-star fa-xs"></i> 98% satisfaction</span>
-          </div>
-        </div>
-
-        <div class="work-card reveal rd2">
-          <div class="work-thumb" style="background:linear-gradient(135deg,#e4fce8,#d0f9d6);">✍️</div>
-          <div class="work-body">
-            <p class="work-tag">Content Writing</p>
-            <h4 class="work-title">Weekly Newsletter for SaaS Brand</h4>
-            <p class="work-desc">Wrote and scheduled weekly newsletters for 3,000+ subscribers, achieving 38% open rate (avg: 21%).</p>
-            <span class="work-result"><i class="fa-solid fa-arrow-trend-up fa-xs"></i> 38% open rate</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================
-       TESTIMONIALS
-  ================================================ -->
-  <section id="testimonials">
-    <div class="section-inner">
-      <div style="text-align:center;margin-bottom:48px;">
-        <span class="section-eyebrow reveal" style="display:block;">✦ Kind Words</span>
-        <h2 class="section-title reveal" style="text-align:center;">What Clients <em>Say</em></h2>
-      </div>
-
-      <div class="tgrid">
-        <div class="tcard reveal">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-text">"Diana is an absolute lifesaver. She took over my entire inbox and calendar and I've never felt more in control of my day. I honestly don't know how I managed without her!"</p>
-          <div class="tcard-divider"></div>
-          <div class="tcard-meta">
-            <div class="tcard-av">👩‍💼</div>
-            <div><p class="tcard-name">Jennifer Mills</p><p class="tcard-role">CEO, Bloom Coaching</p></div>
-          </div>
-        </div>
-
-        <div class="tcard reveal rd1">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-text">"Professional, reliable, and incredibly organized. Diana handled our social media for 6 months and our engagement tripled. She's worth every cent and more."</p>
-          <div class="tcard-divider"></div>
-          <div class="tcard-meta">
-            <div class="tcard-av">👨‍💻</div>
-            <div><p class="tcard-name">Marcus Chen</p><p class="tcard-role">Founder, TechStack Studio</p></div>
-          </div>
-        </div>
-
-        <div class="tcard reveal rd2">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-text">"I was drowning in admin before I hired Diana. Now I have 3 extra hours a day. She's proactive, smart, asks the right questions, and is genuinely a joy to work with."</p>
-          <div class="tcard-divider"></div>
-          <div class="tcard-meta">
-            <div class="tcard-av">👩‍🎨</div>
-            <div><p class="tcard-name">Priya Sharma</p><p class="tcard-role">Creative Director, Studio PS</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================
-       PACKAGES
-  ================================================ -->
-  <!-- <section id="packages">
-    <div class="section-inner">
-      <div class="pkg-header">
-        <span class="section-eyebrow reveal" style="display:block;">✦ Pricing</span>
-        <h2 class="section-title reveal" style="text-align:center;">Simple, <em>Transparent</em> Pricing</h2>
-        <p class="section-sub reveal" style="text-align:center;margin:12px auto 0;">No hidden fees. Pick the plan that fits your needs.</p>
-      </div>
-
-      <div class="pkg-grid">
-        <div class="pkg-card reveal">
-          <p class="pkg-name">Starter</p>
-          <p class="pkg-price">$300 <span>/ month</span></p>
-          <p class="pkg-desc">Perfect for solopreneurs who need light, consistent support.</p>
-          <ul class="pkg-features">
-            <li><i class="fa-solid fa-circle-dot"></i> Up to 10 hrs/week</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Email & calendar management</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Basic data entry</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Weekly check-in calls</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Response within 24 hrs</li>
-          </ul>
-          <a href="#contact" class="btn btn-ghost btn-full">Get Started</a>
-        </div>
-
-        <div class="pkg-card featured reveal rd1">
-          <div class="pkg-badge">Most Popular</div>
-          <p class="pkg-name">Growth</p>
-          <p class="pkg-price">$600 <span>/ month</span></p>
-          <p class="pkg-desc">Ideal for growing businesses that need dedicated, full-service VA support.</p>
-          <ul class="pkg-features">
-            <li><i class="fa-solid fa-circle-dot"></i> Up to 20 hrs/week</li>
-            <li><i class="fa-solid fa-circle-dot"></i> All Starter services</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Social media management</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Customer support</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Content writing (2 posts/wk)</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Response within 4 hrs</li>
-          </ul>
-          <a href="#contact" class="btn btn-rose btn-full">Get Started</a>
-        </div>
-
-        <div class="pkg-card reveal rd2">
-          <p class="pkg-name">Premium</p>
-          <p class="pkg-price">$1,100 <span>/ month</span></p>
-          <p class="pkg-desc">Full-time dedicated support for busy executives and scaling businesses.</p>
-          <ul class="pkg-features">
-            <li><i class="fa-solid fa-circle-dot"></i> Up to 40 hrs/week</li>
-            <li><i class="fa-solid fa-circle-dot"></i> All Growth services</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Project management</li>
-            <li><i class="fa-solid fa-circle-dot"></i> CRM management</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Priority response (&lt; 1 hr)</li>
-            <li><i class="fa-solid fa-circle-dot"></i> Monthly strategy call</li>
-          </ul>
-          <a href="#contact" class="btn btn-ghost btn-full">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- ================================================
-       CONTACT
-  ================================================ -->
-  <section id="contact">
-    <div class="section-inner">
-      <div class="contact-inner">
-
-        <div>
-          <span class="section-eyebrow reveal">✦ Let's Connect</span>
-          <h2 class="contact-heading reveal">
-            Ready to <em>Reclaim</em><br>Your Time?
-          </h2>
-          <p class="contact-subtext reveal">
-            Let's talk about how I can support your business. Fill out the form and I'll reply within 24 hours.
-          </p>
-
-          <div class="contact-methods reveal">
-            <a href="mailto:daianabalcena021@gmail.com" class="cm">
-              <div class="cm-icon"><i class="fa-solid fa-envelope"></i></div>
-              daianabalcena021@gmail.com
-            </a>
-            <a href="https://wa.me/1234567890" class="cm">
-              <div class="cm-icon"><i class="fa-brands fa-whatsapp"></i></div>
-              +1 (234) 567-890
-            </a>
-            <div class="cm">
-              <div class="cm-icon"><i class="fa-solid fa-location-dot"></i></div>
-              Remote — Available Worldwide
-            </div>
-            <div class="cm">
-              <div class="cm-icon"><i class="fa-solid fa-clock"></i></div>
-              Mon–Fri · 9AM–6PM (PHT)
+        <div class="post-body">
+          <div class="post-bg" style="background:linear-gradient(135deg,#1877f2,#42a5f5);">
+            <div class="post-bg-text">
+              "Hi! I'm Diana 👋<br>
+              6 years in customer service.<br>
+              Now ready to be your<br>
+              <strong>Virtual Assistant.</strong>"
             </div>
           </div>
-
-          <!-- <div class="avail-pill reveal">
-            <div class="avail-pill-dot"></div>
-            <div>
-              <p class="avail-pill-text">Currently Available</p>
-              <p class="avail-pill-sub">Accepting new clients — April 2026</p>
-            </div>
-          </div> -->
         </div>
+        <div class="post-reactions">
+          <div class="reaction-count">
+            <div class="reaction-icons">
+              <div class="reaction-icon r-like">👍</div>
+              <div class="reaction-icon r-love">❤️</div>
+            </div>
+            <span>You and 47 others</span>
+          </div>
+          <span style="color:var(--fb-muted);font-size:14px;">12 comments</span>
+        </div>
+        <div class="post-btns">
+          <div class="post-btn liked"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
+          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
+          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+        </div>
+      </div>
 
-        <!-- Form -->
-        <div class="form-card reveal">
-          <h3 class="form-card-title">Send Me a Message ✦</h3>
-          <form id="contactForm">
-            <div class="frow">
-              <div class="fgroup">
-                <label class="flabel">Your Name</label>
-                <input type="text" name="name" class="finput" placeholder="Jane Smith" required />
-              </div>
-              <div class="fgroup">
-                <label class="flabel">Email Address</label>
-                <input type="email" name="email" class="finput" placeholder="jane@company.com" required />
+      <!-- "Post" 2: Why Hire Diana for VA -->
+      <div class="post-card reveal" id="services">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-briefcase fa-xs"></i> · Available for VA Roles</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-text">
+            <strong>Why my retail experience makes me an exceptional Virtual Assistant:</strong>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:12px;">
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-solid fa-headset"></i></div>
+              <div class="service-info">
+                <div class="s-name">Customer Support & Communication</div>
+                <div class="s-desc">6 years handling customers at Watsons, Penshoppe & HDPI — expert at resolving concerns professionally, building rapport, and maintaining a positive brand image via email, chat, or phone.</div>
               </div>
             </div>
-            <div class="fgroup">
-              <label class="flabel">Service Needed</label>
-              <select name="service" class="finput" required>
-                <option value="" disabled selected>Select a service...</option>
-                <option>Admin & Calendar Management</option>
-                <option>Email & Inbox Management</option>
-                <option>Social Media Management</option>
-                <option>Customer Support</option>
-                <option>Data Entry & Research</option>
-                <option>Content & Copywriting</option>
-                <option>Multiple Services / Not Sure</option>
-              </select>
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="service-info">
+                <div class="s-name">Admin, Scheduling & Organization</div>
+                <div class="s-desc">Experienced in managing daily store operations, coordinating tasks across teams, maintaining accurate records and reports — directly transferable to calendar and inbox management.</div>
+              </div>
             </div>
-            <div class="fgroup">
-              <label class="flabel">Hours Per Week</label>
-              <select name="hours" class="finput">
-                <option value="" disabled selected>Estimate...</option>
-                <option>Less than 10 hrs</option>
-                <option>10–20 hrs</option>
-                <option>20–40 hrs</option>
-                <option>Full-time (40+ hrs)</option>
-              </select>
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-solid fa-database"></i></div>
+              <div class="service-info">
+                <div class="s-name">Data Entry & Record Management</div>
+                <div class="s-desc">Handled cash register transactions, inventory tracking, and sales reporting with precision — ensuring 100% accuracy in data handling and documentation.</div>
+              </div>
             </div>
-            <div class="fgroup">
-              <label class="flabel">Your Message</label>
-              <textarea name="message" class="finput" placeholder="Tell me about your business, what you need help with, and any specific requirements..." required></textarea>
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-solid fa-envelope-open-text"></i></div>
+              <div class="service-info">
+                <div class="s-name">Email & Inbox Management</div>
+                <div class="s-desc">Strong written communication skills developed through years of customer correspondence and professional reporting. Quick learner for email tools like Gmail, Outlook, and Mailchimp.</div>
+              </div>
             </div>
-            <button type="submit" class="btn btn-rose btn-full" id="submitBtn">
-              Send Message <i class="fa-solid fa-paper-plane fa-xs"></i>
-            </button>
-          </form>
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-brands fa-instagram"></i></div>
+              <div class="service-info">
+                <div class="s-name">Social Media Assistance</div>
+                <div class="s-desc">Familiar with social media platforms and brand communication — able to assist with content scheduling, community engagement, and basic content creation using Canva.</div>
+              </div>
+            </div>
+            <div class="service-row">
+              <div class="service-icon-fb"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div class="service-info">
+                <div class="s-name">Research & Lead Support</div>
+                <div class="s-desc">Detail-oriented research skills with strong internet proficiency. Able to support lead generation, competitor research, and product/market analysis tasks efficiently.</div>
+              </div>
+            </div>
+          </div>
         </div>
-
+        <div class="post-reactions">
+          <div class="reaction-count">
+            <div class="reaction-icons">
+              <div class="reaction-icon r-like">👍</div>
+              <div class="reaction-icon r-care">🌟</div>
+            </div>
+            <span>38 people found this helpful</span>
+          </div>
+        </div>
+        <div class="post-btns">
+          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
+          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
+          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <!-- "Post" 3: Work Experience Timeline -->
+      <div class="post-card reveal" id="experience">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-clock-rotate-left fa-xs"></i> Work History</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-text"><strong>📋 My Professional Journey</strong></div>
+
+          <!-- HDPI — Current -->
+          <div class="exp-item">
+            <div class="exp-logo">🏪</div>
+            <div class="exp-details">
+              <div class="exp-title">Sales Associate <span style="background:#e7f8e7;color:#1a7f37;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;margin-left:6px;">Current</span></div>
+              <div class="exp-company">Hard Discount Philippines Inc. (HDPI)</div>
+              <div class="exp-period">May 2024 – Present · Lakeside, Cabuyao</div>
+              <div class="exp-desc">Managing sales floor operations, assisting customers, handling transactions, maintaining product displays, and supporting daily store efficiency. Strong focus on customer satisfaction and operational accuracy.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Customer service, data handling, operations management</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+
+          <!-- Penshoppe -->
+          <div class="exp-item">
+            <div class="exp-logo">👗</div>
+            <div class="exp-details">
+              <div class="exp-title">Store Cashier / Sales Staff</div>
+              <div class="exp-company">Penshoppe</div>
+              <div class="exp-period">Oct 2023 – Apr 2024 · SM Sta. Rosa, Laguna</div>
+              <div class="exp-desc">Handled point-of-sale transactions, assisted customers with product queries, managed fitting room operations, and supported merchandising and stock management.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Multi-tasking, communication, accuracy</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+
+          <!-- Mandaue Foam -->
+          <div class="exp-item">
+            <div class="exp-logo">🪑</div>
+            <div class="exp-details">
+              <div class="exp-title">Store Cashier</div>
+              <div class="exp-company">Mandaue Foam</div>
+              <div class="exp-period">Oct 2022 – Mar 2023 · Tagapo, Sta. Rosa, Laguna</div>
+              <div class="exp-desc">Processed customer payments, managed cash register operations, handled receipts and daily cash reports, and provided product information to customers.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Data entry, financial accuracy, reporting</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+
+          <!-- Watsons -->
+          <div class="exp-item">
+            <div class="exp-logo">💊</div>
+            <div class="exp-details">
+              <div class="exp-title">Cashier</div>
+              <div class="exp-company">Watsons Personal Care Stores (Phils.) Inc.</div>
+              <div class="exp-period">Aug 2019 – Jul 2022 · SM Sta. Rosa, Laguna</div>
+              <div class="exp-desc">3-year tenure managing cashier operations, loyalty program enrolment, inventory coordination, and customer service excellence. Recognized for accuracy and professionalism.</div>
+              <div class="va-badge"><i class="fa-solid fa-star fa-xs"></i> VA-Relevant: Long-term reliability, customer relations, admin tasks</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+
+          <!-- Goldilocks -->
+          <div class="exp-item">
+            <div class="exp-logo">🍰</div>
+            <div class="exp-details">
+              <div class="exp-title">Store Crew</div>
+              <div class="exp-company">Goldilocks Bakeshops Bayan Walk</div>
+              <div class="exp-period">Sep 2018 – Mar 2019 · Cabuyao Bayan, Laguna</div>
+              <div class="exp-desc">Assisted customers, managed product display, handled food preparation support, and maintained store cleanliness and operational standards.</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-btns">
+          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
+          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
+          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+        </div>
+      </div>
+
+      <!-- "Post" 4: Education -->
+      <div class="post-card reveal">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-graduation-cap fa-xs"></i> Education</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-text"><strong>🎓 Educational Background</strong></div>
+
+          <div class="edu-item">
+            <div class="edu-logo">🎓</div>
+            <div class="edu-details">
+              <div class="edu-school">CITI Global College</div>
+              <div class="edu-degree">Bachelor of Science in Tourism Management</div>
+              <div class="edu-year">2014 – 2018 · J.P. Rizal St., Cabuyao City, Laguna</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+          <div class="edu-item">
+            <div class="edu-logo">📚</div>
+            <div class="edu-details">
+              <div class="edu-school">Cabuyao National High School</div>
+              <div class="edu-degree">Secondary Education</div>
+              <div class="edu-year">2010 – 2014 · Brgy. Tres, Cabuyao City, Laguna</div>
+            </div>
+          </div>
+          <div class="fb-divider"></div>
+          <div class="edu-item">
+            <div class="edu-logo">🏫</div>
+            <div class="edu-details">
+              <div class="edu-school">North Marinig Elementary School</div>
+              <div class="edu-degree">Primary Education</div>
+              <div class="edu-year">2009 – 2010 · Brgy. Marinig, Cabuyao City, Laguna</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-btns">
+          <div class="post-btn"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
+          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
+          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+        </div>
+      </div>
+
+      <!-- "Post" 5: Why hire Diana — motivational -->
+      <div class="post-card reveal">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-globe fa-xs"></i> · Career Shift Update</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-bg" style="background:linear-gradient(135deg,#f5576c,#f093fb);">
+            <div class="post-bg-text">
+              "6 years of serving customers<br>face-to-face has given me<br>skills money can't teach.<br><br>
+              <span style="font-size:18px;opacity:0.9;">Now I bring that same dedication<br>to your business — remotely. 💪</span>"
+            </div>
+          </div>
+          <div style="padding-top:12px;font-size:15px;color:var(--fb-text);line-height:1.65;">
+            My BS in Tourism Management taught me hospitality, communication, and attention to detail. My retail career built discipline, resilience, and a customer-first mindset. I'm not starting from scratch — I'm <strong>pivoting with purpose</strong>, bringing real-world skills that most VAs don't have.
+            <br><br>
+            If you need someone who shows up on time, handles pressure gracefully, communicates clearly, and cares about results — <strong>I'm your person.</strong> 🌟
+          </div>
+        </div>
+        <div class="post-reactions">
+          <div class="reaction-count">
+            <div class="reaction-icons">
+              <div class="reaction-icon r-love">❤️</div>
+              <div class="reaction-icon r-care">🌟</div>
+              <div class="reaction-icon r-like">👍</div>
+            </div>
+            <span>89 people reacted</span>
+          </div>
+        </div>
+        <div class="post-btns">
+          <div class="post-btn liked"><i class="fa-solid fa-thumbs-up fa-sm"></i> Like</div>
+          <div class="post-btn"><i class="fa-regular fa-comment fa-sm"></i> Comment</div>
+          <div class="post-btn"><i class="fa-solid fa-share fa-sm"></i> Share</div>
+        </div>
+      </div>
+
+      <!-- "Post" 6: Contact form -->
+      <div class="post-card reveal" id="contact">
+        <div class="post-header">
+          <div class="post-avatar">D</div>
+          <div class="post-meta">
+            <div class="post-author">Diana C. Balcena</div>
+            <div class="post-time"><i class="fa-solid fa-envelope fa-xs"></i> Send a Message</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <div class="post-text"><strong>📩 Let's Connect!</strong></div>
+          <div style="font-size:15px;color:var(--fb-text2);margin-bottom:16px;line-height:1.6;">
+            Interested in working together? Fill out this form and I'll get back to you within 24 hours. I'm open to full-time, part-time, and project-based VA roles.
+          </div>
+
+          <div class="contact-form-inner" style="padding:0;">
+            <form id="contactForm">
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input type="text" name="name" class="form-input" placeholder="e.g. John Smith" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Type of VA Work</label>
+                <select name="va_type" class="form-input" required>
+                  <option value="" disabled selected>Select...</option>
+                  <option>Customer Support</option>
+                  <option>Email & Inbox Management</option>
+                  <option>Admin & Scheduling</option>
+                  <option>Data Entry & Research</option>
+                  <option>Social Media Assistance</option>
+                  <option>General VA / Multiple Tasks</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Your Message</label>
+                <textarea name="message" class="form-input" placeholder="Tell me about the role, hours, and what you need help with..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end center -->
+
+  </div><!-- end fb-layout -->
 
   <!-- ================================================
        FOOTER
   ================================================ -->
-  <footer>
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">Diana <span>Balcena</span></div>
-        <p class="footer-tagline">Virtual Assistant · Remote Support · Worldwide</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Portfolio</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="footer-social">
-        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-      </div>
+  <div class="fb-footer">
+    <div style="max-width:1260px;margin:0 auto;padding:16px 0;border-top:1px solid var(--fb-border);">
+      Diana C. Balcena · Virtual Assistant Portfolio ·
+      <a href="mailto:daianabalcena021@gmail.com">daianabalcena021@gmail.com</a> ·
+      0927 554 5833 · Cabuyao, Laguna 🇵🇭 ·
+      © 2026
     </div>
-    <p class="footer-copy">© 2026 Diana Balcena · Virtual Assistant · Made with ♥</p>
-  </footer>
+  </div>
 
+  <!-- Mobile bottom nav -->
+  <div class="mob-bottom-nav">
+    <div class="mob-nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </div>
+    <div class="mob-nav-item" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+      <i class="fa-solid fa-list-check"></i>
+      <span>Services</span>
+    </div>
+    <div class="mob-nav-item" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
+      <i class="fa-solid fa-briefcase"></i>
+      <span>Work</span>
+    </div>
+    <div class="mob-nav-item" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </div>
+  </div>
+
+  <!-- EmailJS -->
   <script>
-    /* ── Navbar scroll ── */
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
+    /* ── EmailJS ── */
+    emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // 🔑 Replace with Diana's EmailJS public key
 
-    /* ── Mobile menu ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobPanel  = document.getElementById('mobPanel');
-    hamburger.addEventListener('click', () => {
-      const open = mobPanel.classList.toggle('open');
-      hamburger.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    const form    = document.getElementById('contactForm');
+    const subBtn  = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      subBtn.disabled = true;
+      subBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin fa-sm"></i> Sending...';
+
+      emailjs.sendForm(
+        'YOUR_SERVICE_ID',   // 🔑 Replace with Diana's EmailJS service ID
+        'YOUR_TEMPLATE_ID',  // 🔑 Replace with Diana's EmailJS template ID
+        this
+      )
+      .then(() => {
+        form.reset();
+        subBtn.innerHTML = '<i class="fa-solid fa-check fa-sm"></i> Message Sent!';
+        subBtn.style.background = '#42b72a';
+        setTimeout(() => {
+          subBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message';
+          subBtn.style.background = '';
+          subBtn.disabled = false;
+        }, 3000);
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Message failed. Please email daianabalcena021@gmail.com directly.');
+        subBtn.innerHTML = '<i class="fa-brands fa-facebook-messenger fa-sm"></i> Send Message';
+        subBtn.disabled = false;
+      });
     });
-    function closeMob() {
-      mobPanel.classList.remove('open');
-      hamburger.querySelector('i').className = 'fa-solid fa-bars';
-    }
 
     /* ── Scroll reveal ── */
     const ro = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-    /* ── EmailJS Contact Form ── */
-    emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // 🔑 Replace with your EmailJS public key
-
-    const form   = document.getElementById('contactForm');
-    const subBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      subBtn.disabled = true;
-      subBtn.innerHTML = 'Sending… <i class="fa-solid fa-spinner fa-spin fa-xs"></i>';
-
-      emailjs.sendForm(
-        'YOUR_SERVICE_ID',   // 🔑 Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID',  // 🔑 Replace with your EmailJS template ID
-        this
-      )
-      .then(() => {
-        form.reset();
-        subBtn.innerHTML = '✓ Message Sent!';
-        subBtn.style.background = '#a8b8a8';
-        subBtn.style.boxShadow  = '0 4px 14px rgba(168,184,168,0.3)';
-        setTimeout(() => {
-          subBtn.innerHTML      = 'Send Message <i class="fa-solid fa-paper-plane fa-xs"></i>';
-          subBtn.style.background = '';
-          subBtn.style.boxShadow  = '';
-          subBtn.disabled = false;
-        }, 3000);
-      })
-      .catch(err => {
-        console.error('EmailJS error:', err);
-        alert('Message failed to send. Please email me at daianabalcena021@gmail.com');
-        subBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane fa-xs"></i>';
-        subBtn.disabled  = false;
+    /* ── Nav tab scroll indicator ── */
+    window.addEventListener('scroll', () => {
+      const tabs = document.querySelectorAll('.nav-tab');
+      const sections = ['home','services','experience','contact'];
+      sections.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          tabs.forEach(t => t.classList.remove('active'));
+          if (tabs[i]) tabs[i].classList.add('active');
+        }
       });
     });
+
+    function scrollTo(id) {
+      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   </script>
 
 </body>
